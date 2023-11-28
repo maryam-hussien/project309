@@ -70,7 +70,7 @@ const LoginUser = async (req, res) => {
     //check if users exists
     const user= await User.findOne({email})
     if (user && await bycrpt.compare(password , user.password)){
-      return res.status(400).send({
+      return res.status(200).send({
         success: true,
         message: "Logged In",
           _id: user.id,
@@ -88,7 +88,7 @@ const LoginUser = async (req, res) => {
      }
     
   } catch (error) {
-    res.send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -99,7 +99,7 @@ const LoginUser = async (req, res) => {
 const GetMe = async (req , res) => {
   const { _id , name , email , role , profilePicture} = await User.findById(req.user.id)
 
-  res.status(400).send({
+  res.status(200).send({
     message: "display All data",
     _id: _id,
     name,
@@ -127,9 +127,9 @@ const editUser = async(req , res) => {
       message: " not authorized User",
     });
    }
-   res.status(400).json(userr)
+   res.status(201).json(userr)
   }catch (error) {
-    res.send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -146,12 +146,12 @@ const deleteUser = async(req , res) => {
        message: " not authorized User",
      });
     }
-    res.status(201).send({
+    res.status(200).send({
       success: true,
       message:"deleted succesfully",
     });
    }catch (error) {
-     res.send({
+     res.status(400).send({
        success: false,
        message: error.message,
      });
@@ -164,7 +164,7 @@ const getAll =  async (req , res) => {
 
     if(userr.role == "admin"){
       const all = await User.find()
-      res.json(all)
+      res.status(200).json(all)
     }
     else{
       res.status(400).send({
