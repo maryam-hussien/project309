@@ -4,12 +4,12 @@ const getAll = async(req , res) => {
   try {
     const item = await Item.find()
     if(!item){
-      res.send({
+      res.status(404).send({
         success: false,
         message: "no items",
       });
     }
-    res.json(item)
+    res.status(200).json(item)
   }catch (error) {
     res.send({
       success: false,
@@ -42,14 +42,14 @@ const AddItem = async(req , res) => {
   try {
     const {name , type , price , image, size , description} = req.body
     if( !type || !price || !image){
-      res.send({
+      res.status(400).send({
         success: false,
         message: "type , price and image are required",
       });
     }
     const itemExist = await Item.findOne({image})
     if( itemExist){
-      res.send({
+      res.status(400).send({
         success: false,
         message: "item already existed",
       });
@@ -66,7 +66,7 @@ const AddItem = async(req , res) => {
       res.status(201).json(item)
      }
   } catch (error) {
-    res.send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -84,7 +84,7 @@ const editItem = async(req , res) => {
       return res.status(400).send({ success: false, message: 'Invalid Item ID' });
     }
     if( !type || !price || !image){
-      res.send({
+      res.status(400).send({
         success: false,
         message: "type , price and image are required",
       });
@@ -96,7 +96,7 @@ const editItem = async(req , res) => {
     return res.status(201).json(item)
 
   }  catch (error) {
-    res.send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -114,7 +114,7 @@ const deleteItem = async(req , res) => {
      if(!item){
       return(res.status(404).json({  success: false, message : 'item not found'}))
     }
-    return res.status(201).send({ success: true , message :'Deleted Successfully'})
+    return res.status(200).send({ success: true , message :'Deleted Successfully'})
 
   }  catch (error) {
     res.send({
