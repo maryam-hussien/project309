@@ -1,5 +1,6 @@
 import { useState } from "react";
 import React from "react";
+import axios from 'axios';
 import './Authentication.css'
 import login from '../../assets/login.svg'
 import register from '../../assets/register.svg'
@@ -7,6 +8,7 @@ import google from '../../assets/google.svg'
 import linkedin from '../../assets/linkedin.svg'
 import facebook from '../../assets/facebook.svg'
 import twitter from '../../assets/twitter.svg'
+import CustomButton from '../../componenet/CustomButton'; 
 function Authentication() {
     const [SignUpMode, setSignUpMode] = useState(false);
     const [email, setEmail] = useState("");
@@ -17,8 +19,7 @@ function Authentication() {
         setSignUpMode(!SignUpMode)
     }
     const validatePassword1 = () => {
-      // Add your password validation logic here
-      // For example, checking if the password has at least 6 characters
+     
       const isValid = password.length >= 6;
       setPasswordError(isValid ? "" : "Password must be at least 6 characters");
     };
@@ -26,13 +27,8 @@ function Authentication() {
     const validateAll = () => {
       validateEmail();
       validatePassword();
-  
-      // Add any additional validation logic here
-      // For example, checking other form fields
-  
-      // If all validations pass, you can proceed with the login
+    
       if (emailError === "" && passwordError === "") {
-        // Your login logic here
       }
     };
     const validateEmail = () => {
@@ -51,16 +47,14 @@ function Authentication() {
     };
    // Registration form state
    const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     phone: "",
-    password: "",
-    checkbox: false,
   });
 
   // Registration form error state
   const [formErrors, setFormErrors] = useState({
-    username: "",
+    name: "",
     email: "",
     phone: "",
     password: "",
@@ -70,7 +64,7 @@ function Authentication() {
   const validateUsername = () => {
     setFormErrors((prevErrors) => ({
       ...prevErrors,
-      username: formData.username.trim() ? "" : "Username is required",
+      name: formData.name.trim() ? "" : "Username is required",
     }));
   };
 
@@ -90,28 +84,18 @@ function Authentication() {
     }));
   };
 
-  const validateCheckbox = () => {
-    setFormErrors((prevErrors) => ({
-      ...prevErrors,
-      checkbox: formData.checkbox ? "" : "You must agree to the terms",
-    }));
-  };
-  const validateForm = () => {
-    validateUsername();
-    validateEmail();
-    validatePhone();
-    validatePassword();
-    validateCheckbox();
-
-    // Check if there are no errors
-    if (
-      Object.values(formErrors).every((error) => !error) &&
-      Object.values(formData).every((value) => value !== "")
-    ) {
-      // Your registration logic here
-      console.log("Form submitted:", formData);
-    }
-  };
+  
+const validateForm = () => {
+  validateUsername();
+  validateEmail();
+  validatePassword();
+  if (
+    Object.values(formErrors).every((error) => !error) &&
+    Object.values(formData).every((value) => value !== "")
+  ) {
+    signIn(); 
+  }
+};
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -123,6 +107,57 @@ function Authentication() {
     }));
   };
    
+  const signUp = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/user/register', formData);
+      console.log(response);
+      if (response.data.success) {
+        // Save token and user details to local storage
+        localStorage.setItem('token', response.data.token);
+        console.log("done");
+      }
+    } catch (error) {
+      console.error('SignUp Error:', error.message);
+      // Handle signup error here
+    }
+  };
+  
+  const signIn = async () => {
+    try {
+      console.log(email, password);
+      const response = await axios.post('http://localhost:5000/user/login', { "email":email, "password":password });
+      console.log('SignIn Response:', response.data);
+      if (response.data.success) {
+        // Save token and user details to local storage
+        localStorage.setItem('token', response.data.token);
+        console.log("done");
+      }
+    } catch (error) {
+      console.error('SignIn Error:', error.message);
+      // Handle signin error here
+    }
+  };
+  const handleSignUp = () => {
+    // validateAll();
+    console.log("gg",emailError,passwordError);
+    if (emailError === "" && passwordError === "") {
+      console.log("dd");
+      signUp();
+    }
+  };
+
+  const handleSignIn = () => {
+    // validateForm();
+    console.log("tt");
+    signIn();
+    if (
+      Object.values(formErrors).every((error) => !error) &&
+      Object.values(formData).every((value) => value !== "")
+    ) {
+      console.log("fw");
+    }
+  };
+
   return (
     <div className={`container ${SignUpMode ? "sign-up-mode" : ""}`}>
 
@@ -157,13 +192,13 @@ function Authentication() {
               />
             <small id="password-error">{passwordError}</small>
           </div>
-
-          <input
+          <CustomButton type={"submit"} className={"btn"} onClick={handleSignIn} Name={"Sign in"}/>
+          {/* <input
               type="button"
               value="sign in"
               className="btn solid"
-              onClick={validateAll}
-            />
+              onClick={handleSignIn}
+            /> */}
           <p className="social-text">you can also sign in with</p>
           <div className="social-media">
           <img src={google} className="imagee" alt="google" />
@@ -181,13 +216,13 @@ function Authentication() {
                 type="text"
                 placeholder="Name"
                 id="username"
-                name="username"
-                value={formData.username}
+                name="name"
+                value={formData.name}
                 onChange={handleInputChange}
                 onBlur={validateUsername}
                 required
               />
-      <div className="error" id="username-error">{formErrors.username}</div>
+      <div className="error" id="username-error">{formErrors.name}</div>
   </div>
   <div className="input-field">
       <i className="fas fa-envelope"></i>
@@ -232,20 +267,10 @@ function Authentication() {
       <div className="error" id="password-error">{formErrors.password}</div>
   </div>
   <div>
-  <input
-                type="checkbox"
-                id="checkbox"
-                name="checkbox"
-                checked={formData.checkbox}
-                onChange={handleInputChange}
-                onBlur={validateCheckbox}
-                required
-              />
-      <label htmlFor="checkbox">I agree with the terms of the "Buyer Agreement"</label>
-      <div className="error" id="checkbox-error">{formErrors.checkbox}</div>
   </div>
 
-  <button type="button" className="btn" onClick={validateForm}>Submit</button>
+  <CustomButton type={"submit"} className={"btn"} onClick={handleSignUp} Name={"Sign up"}/>
+ 
   <p className="social-text">You can also sign up with</p>
   <div className="social-media">
               <img src={google} className="imagee" alt="google" />
@@ -266,12 +291,10 @@ function Authentication() {
           <p>
             create new account
           </p>
-          <button className="btn transparent" id="sign-up-btn" onClick={SwitchMode}>
-            sign up
-          </button> or
-          <button className="btn transparent" id="go back" >
-            go back
-          </button>
+          <CustomButton type={"submit"} className={"btn transparent"} id="sign-up-btn" onClick={SwitchMode} Name={"Sign up"}/>
+            <p>or</p>
+          <CustomButton  type={"submit"} className={"btn transparent"} id="go back" Name={"go back"} />
+          
         </div>
         <img src={register} className="image" alt="register" />
       </div>
@@ -281,9 +304,9 @@ function Authentication() {
           <p>
             you can sign in
           </p>
-          <button className="btn transparent" id="sign-in-btn" onClick={SwitchMode}>
-            sign in
-          </button>
+          <CustomButton className={"btn transparent"} id="sign-in-btn" onClick={SwitchMode} Name={'sign in'}/>
+           
+          
         </div>
         <img src={login} className="image" alt="login" />
       </div>
