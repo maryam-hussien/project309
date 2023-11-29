@@ -34,7 +34,7 @@ function Authentication() {
     email: "",
     password: ""
   });
-  const [formErrors, setFormErrors] = useState({formData});
+  const [formErrors, setFormErrors] = useState({ formData });
 
 
   const handleInputChange = (e) => {
@@ -55,7 +55,7 @@ function Authentication() {
   const validate = (values) => {
     const errors = {};
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-setisSubmit(true)
+    setisSubmit(true)
     if (!values.name) {
       errors.name = "Username is required";
     }
@@ -71,7 +71,7 @@ setisSubmit(true)
     } else if (values.password.length < 6) {
       errors.passwordLength = "Password must be at least 6 characters";
     }
- 
+
     return errors;
   };
   const validate1 = (data) => {
@@ -91,7 +91,7 @@ setisSubmit(true)
 
   const signUp = async () => {
     try {
-      console.log("gg",formData);
+      console.log("gg", formData);
       const response = await axios.post('http://localhost:5000/user/register', formData);
       console.log(response);
       if (response.data.success) {
@@ -106,31 +106,31 @@ setisSubmit(true)
   };
 
   const signIn = async ({ email, password }) => {
-  try {
-    const response = await axios.post('http://localhost:5000/user/login', { email, password });
+    try {
+      const response = await axios.post('http://localhost:5000/user/login', { email, password });
 
-    console.log('SignIn Response:', response.data);
-    return response.data;
-  } catch (error) {
-    console.error('SignIn Error:', error);
-    throw error;
-  }
-};
+      console.log('SignIn Response:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('SignIn Error:', error);
+      throw error;
+    }
+  };
 
-  
-  
-  
+
+
+
   const handleSignUp = (e) => {
     e.preventDefault();
     const errors = validate(formData)
-setFormErrors(errors)
-console.log({
-    formData,
-    errors
-})
-if (Object.keys(errors).length === 0) {
-    signUp()
-}
+    setFormErrors(errors)
+    console.log({
+      formData,
+      errors
+    })
+    if (Object.keys(errors).length === 0) {
+      signUp()
+    }
   };
 
 
@@ -156,8 +156,8 @@ if (Object.keys(errors).length === 0) {
     }
   };
 
-  
-  
+
+
 
   return (
     <div className={`container ${SignUpMode ? "sign-up-mode" : ""}`}>
@@ -169,22 +169,22 @@ if (Object.keys(errors).length === 0) {
 
 
             <CustomInput
-  type={"email"}
-  spellCheck="false"
-  placeholder={"Enter Email"}
-  onChange={(e) => setEmail(e.target.value)}
-  onBlur={validateEmail}
-/>
-      <small className="email-error">{emailError}</small>
+              type={"email"}
+              spellCheck="false"
+              placeholder={"Enter Email"}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={validateEmail}
+            />
+            <small className="email-error">{emailError}</small>
 
 
 
 
-      <CustomInput
-  placeholder="Enter Password"
-  onChange={(e) => setPassword(e.target.value)}
-  onBlur={validatePassword1}
-/>
+            <CustomInput
+              placeholder="Enter Password"
+              onChange={(e) => setPassword(e.target.value)}
+              onBlur={validatePassword1}
+            />
             <small className="password-error">{passwordError}</small>
 
             <CustomButton onClick={handleSignIn} Name="Sign in" />
@@ -194,7 +194,7 @@ if (Object.keys(errors).length === 0) {
             <h2 className="title">Register</h2>
 
 
-           
+
             <CustomInput
               type="text"
               placeholder="Name"
@@ -247,7 +247,7 @@ if (Object.keys(errors).length === 0) {
 
             <div>
             </div>
-            <CustomButton  onClick={handleSignUp}  Name={"Sign up"} />
+            <CustomButton onClick={handleSignUp} Name={"Sign up"} />
           </form>
         </div>
       </div>

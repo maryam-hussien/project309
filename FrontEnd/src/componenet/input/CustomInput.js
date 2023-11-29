@@ -7,6 +7,7 @@ function CustomInput(props) {
     width: '100%',
     backgroundColor: '#CA52520F',
     margin: '16px 0',
+    fontFamily:'Lucida Handwriting',
     height: '62px',
     textDecoration: 'none', 
     border: '1px solid #BE4040',
@@ -17,20 +18,20 @@ function CustomInput(props) {
     position: 'relative',
   };
 
-  inputFieldStyles['&:focus'] = {
-   
-    border: '1px solid #BE4040',
-  };
   
   
   return (
-        <input style={inputFieldStyles}
-          type={type}
-          name={Name}
-          placeholder={placeholder}
-          onChange={onChange} 
-          onBlur={onBlur}     
-        />
+    <input
+    style={{
+      ...inputFieldStyles,
+      fontFamily: 'Lucida Handwriting',
+    }}
+    type={type}
+    name={Name}
+    placeholder={placeholder}
+    onChange={onChange}
+    onBlur={onBlur}
+  />
   );
 }
 

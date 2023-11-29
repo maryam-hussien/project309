@@ -1,0 +1,74 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: Lucida Handwriting;
+}
+
+.container p{
+    display: flex;
+    margin-left: 18px;
+    margin-top: 37px;
+    font-size: 19px;
+
+}
+.container h1{
+    margin-top: 25px;
+
+}
+.Buttons{
+    margin-top: 40px;
+    display: flex;
+    margin-left: 20px;
+    gap:90px;
+   justify-content: center;
+}
+.input-field{
+    display: flex;
+    flex-direction:row;
+    align-items: stretch;
+    gap:19px;
+    margin-left: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.input-width{
+    width: 80%;
+}
+.input-field label{
+    width: 100px;
+}
+.error-message{
+    color: red;
+}
+.box{
+    box-sizing: border-box;
+    border: 1px solid #BE4040;
+    width:300px;
+    margin-left: 60px;
+    border-radius:20px;
+    background-color:#CA52520F;
+}
+.pp{
+    border-bottom: 1px solid #BE4040;
+}
+.pp p{
+    margin-bottom: 15px;
+}
+
+.all{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin-left: 10px;
+}
+@media (max-width: 1500px) and (min-width: 800px) {
+    .Buttons{
+        margin-top: 40px;
+        display: flex;
+        gap:200px;
+       justify-content: center;
+    }
+}
