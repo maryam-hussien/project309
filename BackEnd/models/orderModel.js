@@ -6,10 +6,27 @@ const orderSchema = mongoose.Schema({
         default :1,
         required: true
     },
-    product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item'
-    },
+    product: [{
+        product: { type: mongoose.Schema.Types.ObjectId, ref: 'Item' },
+        name:{
+            type: String,
+          },
+          type : {
+            type: String,
+          },
+           image : {
+            type: String,
+           },
+           price : {
+            type: String,
+           },
+           size : {
+            type: String,
+           },
+           description : {
+            type: String,
+           }
+}],
     shippingAddress1: {
         type: String,
         required: true,

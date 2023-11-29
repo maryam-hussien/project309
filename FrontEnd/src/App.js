@@ -7,8 +7,8 @@ import Checkout from "./pages/checkout/Checkout";
 function App() {
   return (
     <div className="App">
-      
-      <Routes >
+      <HomePage/>
+       <Routes >
       <Route path="/" element={<Home1 />}/>
          <Route path="/cart/checkout" element={<Checkout />}/>
         <Route path="/auth" element={<Authentication />}/>
