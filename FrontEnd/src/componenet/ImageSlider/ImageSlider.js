@@ -1,24 +1,26 @@
 import { useState } from "react";
-import i from "../components/Images/Image-1.jpg"
-import i2 from "../components/Images/Image-2.jpg"
+import i from "../Images/Image-1.jpg"
+import i2 from "../Images/Image-2.jpg"
 import './ImageSlider.css';
 const ImageSlider =()=>{
     const Slides=[i,i,i2]
     const [currentIndex,setcurrentIndex]=useState(0);
     const slideStyles ={
         borderRadius:"10px",
-        backgroundSize:"cover"
+        width:'100%',
+        backgroundSize:"cover",
+        display:'flex',
     }
+   
     const slideStyles1 ={
     
-      width:'80%',
+      width:'90%',
         height:'49vh',
         top: '40px',
         overflow:'hidden',
-        display:'flex',
         justifyContent:'center' ,
         position:'relative',
-        left: '127px',
+        display:'flex',
           borderRadius:"10px",
      
           backgroundSize:"cover",
@@ -38,10 +40,11 @@ const ImageSlider =()=>{
           <div className="welcome"></div>
     
           <div style={slideStyles}>
-            <div style={slideStyles1}></div>
-            <div className="leftArrowStyles" onClick={handleLeftArrowClick}>
+          <div className="leftArrowStyles" onClick={handleLeftArrowClick}>
               &#9665;
             </div>
+            <div style={slideStyles1}></div>
+           
             <div className="RightArowStyles" onClick={handleRightArrowClick}>
               &#9655;
             </div>

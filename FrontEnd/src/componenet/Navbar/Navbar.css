@@ -54,6 +54,10 @@ text-align: center;
     
     margin: 0px;
   }
+  .Home h1{
+   font-size: 25px;
+    margin-top: 10px;
+    }
   .navbar ul{
     list-style-type: none;
     background-color : hsl(0, 50%, 50%);
@@ -123,3 +127,23 @@ text-align: center;
     user-select: none;
     width: 11px; 
   }
+@media(min-width:320px) and (max-width:425px){
+  .nav1 h1{
+    top:0;
+   position: relative;
+   display: flex;
+   font-size: 22px;
+      justify-content: center;
+      bottom: 10px;
+    }
+    .nav2 p{
+      font-size: 22px;
+    }
+    .Home h1{
+    font-size: 19px;
+    margin-top: 20px;
+    }
+    .nav1{
+      height: 50px;
+    }
+}

@@ -6,11 +6,9 @@
     margin-right: 10dvb;
     margin-left: 10dvb;
     align-items: center;
-    
-    
-    
-      
-      
+}
+.row{
+    gap:8px;
 }
 .ProductList h3{
   

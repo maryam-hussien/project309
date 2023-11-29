@@ -1,5 +1,5 @@
-import PrducrsData from "../Products-data";
-import Products from "./Products";
+import PrducrsData from "../Products/Products-data";
+import Products from "../Products/Products";
 import './ProductList.css';
 function ProductList(){
     const product =PrducrsData.map((product)=>{

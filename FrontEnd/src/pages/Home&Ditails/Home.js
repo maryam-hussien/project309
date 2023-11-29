@@ -1,9 +1,10 @@
-import Navbar from './components/Navbar';
-import './App.css';
-import ProductList from './components/ProductList';
-import ImageSlider from './components/ImageSlider';
-import i from "../src/components/Images/Image-1.jpg";
-import i2 from "../src/components/Images/Image-2.jpg";
+import Navbar from '../../componenet/Navbar/Navbar';
+import '../../../src/App.css';
+import '../../componenet/Navbar/Navbar.css'
+import ProductList from '../../componenet/ProductList/ProductList';
+import ImageSlider from '../../componenet/ImageSlider/ImageSlider';
+import i from "../../componenet/Images/Image-1.jpg";
+import i2 from "../../componenet/Images/Image-2.jpg";
 const Slides=[i,i,i2]
 
 const containerStyles={height:'40dvb'}
