@@ -1,12 +1,10 @@
 import Navbar from '../../componenet/Navbar/Navbar';
-// import '../../../src/App.css';
 import Footer from '../../componenet/footer/Footer';
 import '../../componenet/Navbar/Navbar.css'
 import ProductList from '../../componenet/ProductList/ProductList';
 import ImageSlider from '../../componenet/ImageSlider/ImageSlider';
-import i from "../../componenet/Images/Image-1.jpg";
-import i2 from "../../componenet/Images/Image-2.jpg";
-
+import i from "../../assets/Images/Image-1.jpg";
+import i2 from "../../assets/Images/Image-2.jpg";
 const Slides=[i,i,i2]
 const containerStyles={height:'40dvb'}
 

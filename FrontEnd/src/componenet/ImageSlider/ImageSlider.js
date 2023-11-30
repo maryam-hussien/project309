@@ -1,6 +1,6 @@
 import { useState } from "react";
-import i from "../Images/Image-1.jpg"
-import i2 from "../Images/Image-2.jpg"
+import i from "../../assets/Images/Image-1.jpg";
+import i2 from "../../assets/Images/Image-2.jpg";
 import './ImageSlider.css';
 const ImageSlider =()=>{
     const Slides=[i,i,i2]

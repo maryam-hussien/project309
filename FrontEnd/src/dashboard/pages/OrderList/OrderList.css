@@ -1,0 +1,36 @@
+.DproductList{
+    flex: 4;
+}
+
+.DproductListItem{
+    display: flex;
+    align-items: center;
+}
+
+.DproductListImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+.DproductListAccept{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: #BE4040;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.DproductListCancel{
+    color: #BE4040;
+    border: 1 solid #BE4040;
+    border-radius: 10px ;
+    padding: 5px 10px;
+    background-color: #FFFFDA;
+    cursor: pointer;
+    margin-right: 20px;
+}
+

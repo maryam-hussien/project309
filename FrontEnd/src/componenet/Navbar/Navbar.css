@@ -1,10 +1,10 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: Lucida Handwriting;
+  /* font-family: Lucida Handwriting; */
 }
 .navbar{
-    background: #CA5252C7;
+    background: #BE4040;
 
     margin: 0px;
     height: inherit;
@@ -81,6 +81,7 @@ text-align: center;
   }
   
   .nav2{
+    color: #CA5252C7;
     background-color :  #FFFFBA;
     margin: 0px;
     height: inherit;

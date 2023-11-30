@@ -1,6 +1,8 @@
 import '../Topbar/topbar.css';
 import SettingsIcon from '@mui/icons-material/Settings';
 import profileImg from '../../../assets/profile/profile.jpg';
+import { Link } from "react-router-dom";
+
 
 
 function Topbar() {
@@ -11,9 +13,13 @@ function Topbar() {
                 <span className="logo"> Donia Essam</span>
             </div>
             <div className="topRight">
+            
                 <div className="topbarIconsContainer">
+                <Link to="/dashboard/user/:userId">
                     <SettingsIcon/>
+                    </Link>
                 </div>
+                
                 <img src={profileImg} alt="" className="topAvatar" />
             </div>
         </div>
