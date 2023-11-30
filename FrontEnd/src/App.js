@@ -3,6 +3,7 @@ import {Routes, Route } from "react-router-dom";
  import Home1 from "./pages/Home/Home";
  import Authentication from "./pages/Signinup/Authentication";
 import Checkout from "./pages/checkout/Checkout";
+import "./app.css"
 function App() {
   return (
     <div className="App">
