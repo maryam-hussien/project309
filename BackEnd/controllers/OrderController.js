@@ -29,7 +29,7 @@ const addOrder = async(req , res) => {
     const userr  = await User.findById(req.user.id)
     const id = req.params.id
     const product = await Item.findById(id)
-    const { shippingAddress1 ,city ,phone , country} = req.body
+    const { Address ,city ,phone , country} = req.body
    if (!userr) {
     return res.status(404).json({
       success: false,
@@ -42,14 +42,14 @@ const addOrder = async(req , res) => {
        message: "product not found",
      });
    }
-    if( !shippingAddress1 || !city || !phone || !country  ){
+    if( !Address || !city || !phone || !country  ){
       return res.status(400).send({
         success: false,
         message: "enter required data",
       });
     }
     const order = await Order.create({
-      shippingAddress1,
+      Address,
       city,
       phone,
       country,
