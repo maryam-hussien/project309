@@ -7,8 +7,8 @@
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     height:200px;
-    color: #FAF9F6;
-    background-color: #13131a;
+    color:  #FFFFBA;
+    background-color: hsl(0, 50%, 50%);
 }
 .footer h1{
     text-align: center;
@@ -36,7 +36,7 @@
     font-size: 25px;
 }
 .title h1{
-    color: white;
+    color:  #FFFFBA;
     font-size: 20px;
-    background-color: #13131a;
+    background-color: hsl(0, 50%, 50%);
 }
