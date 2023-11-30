@@ -15,6 +15,7 @@ const CustomButton = (props) => {
     fontWeight: '600',
     marginBottom: '19px',
     textDecoration: 'none', 
+    marginTop:'20px',
     cursor: 'pointer',
     transition: '0.5s',
   };
