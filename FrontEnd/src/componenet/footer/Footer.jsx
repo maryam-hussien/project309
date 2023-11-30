@@ -7,12 +7,12 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 function Footer() {
   const handleFacebookClick = () => {
     // Redirect to the Facebook page when clicked
-    window.open('https://www.facebook.com/your-facebook-page-url', '_blank');
+    window.open('https://www.facebook.com/archywoody?mibextid=vk8aRt', '_blank');
   };
 
   const handleInstagramClick = () => {
     // Redirect to the Instagram profile when clicked
-    window.open('https://www.instagram.com/your-instagram-profile-url', '_blank');
+    window.open('https://instagram.com/archiwoo_d?igshid=YTQwZjQ0NmI0OA==', '_blank');
   };
 
   const handleWhatsAppClick = () => {

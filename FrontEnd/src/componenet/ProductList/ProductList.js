@@ -10,7 +10,7 @@ function ProductList(){
 return(
     <>
      <div className="ProductList">
-        <h3>Mixed midea tableau</h3>
+        <h3>Mixed midea tableau :</h3>
      <div className="row">
      {product}
      </div>

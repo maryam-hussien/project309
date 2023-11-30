@@ -2,7 +2,6 @@ import React from "react";
 import { useState} from "react";
 import '../checkout/Checkout.css';
 import CustomInput from '../../componenet/input/CustomInput'
-import CustomButon from '../../componenet/button/CustomButton'
 function Checkout() {
     const [formData, setFormData] = useState({
         email: "",
@@ -53,12 +52,12 @@ function Checkout() {
     
     return (
         <>
-            <div className="container">
+            <div className="container2">
                 <h1>Check out</h1>
-                <p>fill your details</p>
-              <div className="all">
-                <div className="box">
-                  <div className="box-content">
+                <p>fill your details :</p>
+              <div className="alll">
+                <div className="boxes">
+                  <div className="box-content2">
                     <div className="pp">
                     <p>Subtotal :</p>
                     <p>Shipping :</p>
@@ -67,11 +66,11 @@ function Checkout() {
                     <p>total :</p>
                   </div>
                 </div>
-                <div className="form">
+                <div className="form2">
 
-                    <div className="input-field">
+                    <div className="input-fieldd">
                         <label htmlFor="email">Email :</label>
-                        <div className="input-width">
+                        <div className="input-widthh">
                         <CustomInput
                 type="email"
                 placeholder="Enter your email"
@@ -82,26 +81,26 @@ function Checkout() {
               {errors.email && <div className="error-message">{errors.email}</div>}
             </div>
                     </div>
-                    <div className="input-field">
+                    <div className="input-fieldd">
                         <label htmlFor="address">Address : </label>
-                        <div className="input-width">
+                        <div className="input-widthh">
                             <CustomInput type="text"
                                 placeholder=" enter your Address"
                                 Name="Address" />
                         </div>
                     </div>
 
-                    <div className="input-field">
+                    <div className="input-fieldd">
                         <label htmlFor="City">City : </label>
-                        <div className="input-width">
+                        <div className="input-widthh">
                             <CustomInput type="text"
                                 placeholder="enter your city"
                                 Name="City" />
                         </div>
                     </div>
-                    <div className="input-field">
+                    <div className="input-fieldd">
                         <label htmlFor="phone">Phone :</label>
-                        <div className="input-width">
+                        <div className="input-widthh">
                         <CustomInput
             type="phone"
             placeholder="Enter your phone"
@@ -113,9 +112,9 @@ function Checkout() {
             </div>
                         </div>
                    
-                    <div className="input-field">
+                    <div className="input-fieldd">
                         <label htmlFor="note">Note :</label>
-                        <div className="input-width">
+                        <div className="input-widthh">
                             <CustomInput type="text"
                                 placeholder="enter your note"
                                 Name="Note" />
@@ -123,8 +122,8 @@ function Checkout() {
                     </div>
                 </div>
                 <div className="Buttons">
-                    <CustomButon Name="Pay Now" onClick={handleSubmit}/>
-                    import CustomButon from '../../componenet/button/CustomButton'
+                    <button onClick={handleSubmit}>Pay Now</button>
+                    <button>Cancel</button>
 
                 </div>
             </div>
