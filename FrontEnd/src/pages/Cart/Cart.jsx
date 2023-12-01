@@ -4,10 +4,14 @@ import placeholderImage from "../../assets/profile/profile.jpg";
 import Navbar from "../../componenet/Navbar/Navbar";
 import Footer from "../../componenet/footer/Footer";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/")
+  }
+
   const [cartItems, setCartItems] = useState([
     { id: 1, name: "Product 1", price: 20.0, quantity: 2 },
     { id: 2, name: "Product 2", price: 15.0, quantity: 1 },
@@ -74,11 +78,10 @@ function Cart() {
           <span>Total:</span>
           <span>${getTotalPrice()}</span>
         </div>
-        <Link to ="/cart/checkout">
+      
         <div className="checkout-button-container">
-  <button className="checkout-button">Checkout</button>
-</div>
-        </Link>
+  <button className="goback-button"  onClick={goBack} >Go back</button>
+    </div>
       </div>
       <Footer />
     </>

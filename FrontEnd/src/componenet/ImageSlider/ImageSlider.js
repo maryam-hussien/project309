@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import i from "../../assets/profile/c.jpeg";
-import i3 from "../../assets/profile/c.webp";
-import i4 from "../../assets/profile/pexels-photo-2922672.jpeg";
-import i2 from "../../assets/profile/pexels-photo-385976.jpeg";
+import i from "../../assets/profile/photo_2023-11-30_09-55-01.jpg";
+import i3 from "../../assets/profile/photo_2023-10-31_23-35-07.jpg";
+import i4 from "../../assets/profile/photo_2023-11-29_08-08-42.jpg";
+import i2 from "../../assets/profile/photo_2023-11-30_09-54-38.jpg";
 import "./ImageSlider.css";
 
 const ImageSlider = () => {
-  const Slides = [i, i, i2, i3, i4];
+  const Slides = [i,i2, i3, i4];
   const [currentIndex, setcurrentIndex] = useState(0);
 
   const handleLeftArrowClick = () => {
@@ -45,7 +45,7 @@ const ImageSlider = () => {
               className={`dotstyle ${currentIndex === slideindex && 'active'}`}
               onClick={() => handleDotClick(slideindex)}
             >
-              ⚫
+              ○
             </div>
           ))}
         </div>
