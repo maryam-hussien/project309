@@ -1,0 +1,12 @@
+.homePage{
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 0;
+}
+.container{
+    display: flex;
+}
+.other{
+    flex: 4;
+    
+}

@@ -1,11 +1,9 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Home from "./dashboard/pages/home/Home";
+import HomePage from "./dashboard/pages/home/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <HomePage />
     </div>
   );
 }
