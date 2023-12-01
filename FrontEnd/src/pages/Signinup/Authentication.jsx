@@ -100,7 +100,6 @@ function Authentication() {
       const response = await axios.post('http://localhost:5000/user/register', formData);
       console.log(response);
       if (response.data.success) {
-        // Save token and user details to local storage
         localStorage.setItem('token', "Bearer "+response.data.token);
         console.log("done");
         navigate("/")
@@ -145,8 +144,6 @@ function Authentication() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-
-    // Check if email and password are defined and not empty
     if (email && password) {
       const errors = validate1({ email, password });
 

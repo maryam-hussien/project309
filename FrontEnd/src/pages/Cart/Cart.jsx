@@ -34,11 +34,7 @@ function Cart() {
       .toFixed(2);
   };
 
-  // const handleCheckout = () => {
-
-  //   alert("Checkout functionality will be implemented here!");
-  // };
-
+ 
   return (
     <>
       <Navbar />
@@ -79,13 +75,10 @@ function Cart() {
           <span>${getTotalPrice()}</span>
         </div>
         <Link to ="/cart/checkout">
-        <button className="checkout-button" >
-          Checkout
-        </button>
+        <div className="checkout-button-container">
+  <button className="checkout-button">Checkout</button>
+</div>
         </Link>
-        {/* <div className="fn">
-
-      </div> */}
       </div>
       <Footer />
     </>

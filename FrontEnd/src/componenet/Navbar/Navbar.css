@@ -23,7 +23,7 @@ text-align: center;
     height: 60px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
   }
   .nav1 h1{
   top:10px;
@@ -52,7 +52,7 @@ text-align: center;
   }
   .Home h1{
    font-size: 25px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 30px;
     }
     .log{
@@ -158,12 +158,11 @@ text-align: center;
   }
 @media(min-width:320px) and (max-width:425px){
   .nav1 h1{
-    top:0;
-   position: relative;
-   display: flex;
-   font-size: 22px;
+     top:0;
+     position: relative;
+      display: flex;
+     font-size: 22px;
       justify-content: center;
-      margin-bottom: 15px;
     }
     .nav2 p{
       font-size: 22px;
@@ -173,6 +172,9 @@ text-align: center;
     font-size: 19px;
     }
     .nav1{
-      height: 50px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 }
