@@ -188,7 +188,7 @@ const getAll =  async (req , res) => {
 module.exports = {
   registerUser,
   LoginUser,
-  GetMe,
+  getById,
   editUser,
   deleteUser,
   getAll
