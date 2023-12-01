@@ -13,13 +13,13 @@ const AddItem = async( req , res ) => {
   const product = await Item.findById(id)
  
   if(!product){
-   return res.status(404).send({
+   return res.send({
       success: false,
       message: "product not found",
     });
   }
   if( !price ){
-   return res.status(400).send({
+   return res.send({
       success: false,
       message: "price is required",
     });
@@ -35,11 +35,11 @@ const AddItem = async( req , res ) => {
 ]
   })
   if (cartItem){
-   return res.status(201).json(cartItem)
+   return res.json(cartItem)
   }
 
 } catch (error) {
-  res.status(500).send({
+  res.send({
     success: false,
     message: error.message,
   });

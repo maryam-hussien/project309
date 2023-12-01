@@ -8,12 +8,12 @@ const getAll = async(req , res) => {
     
     const item = await Item.find()
     if(!item){
-      return res.status(404).send({
+      return res.send({
         success: false,
         message: "no items",
       });
     }
-    return res.status(200).json(item)
+    return res.json(item)
   }catch (error) {
     return res.send({
       success: false,
@@ -27,13 +27,13 @@ const getById = async(req , res) => {
     const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
 
     if (!isValidObjectId) {
-      return res.status(400).send({ success: false, message: 'Invalid item ID' });
+      return res.send({ success: false, message: 'Invalid item ID' });
     }
     const item=  await Item.findById(id)
     if(!item){
-      return(res.status(404).send({success: false, message : 'item not found'}))
+      return(res.send({success: false, message : 'item not found'}))
     }
-    res.status(200).json(item)
+    res.json(item)
 
   } catch (error) {
     res.send({
@@ -49,14 +49,14 @@ const AddItem = async(req , res) => {
       folder: "products",
   })
     if( !type || !price || !image){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "type , price and image are required",
       });
     }
     const itemExist = await Item.findOne({result})
     if( itemExist){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "item already existed",
       });
@@ -73,10 +73,10 @@ const AddItem = async(req , res) => {
       description
     })
      if (item){
-      return res.status(201).json(item)
+      return res.json(item)
      }
   } catch (error) {
-    res.status(400).send({
+    res.send({
       success: false,
       message: error.message,
     });
@@ -103,22 +103,22 @@ const editItem = async(req , res) => {
       }
 
     if (!isValidObjectId) {
-      return res.status(400).send({ success: false, message: 'Invalid Item ID' });
+      return res.send({ success: false, message: 'Invalid Item ID' });
     }
     if( !type || !price || !image){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "type , price and image are required",
       });
     }
      const item = await Item.findByIdAndUpdate(id , update ,  { new: true })
      if(!item){
-      return(res.status(404).send({success: false, message : 'book not found'}))
+      return(res.send({success: false, message : 'book not found'}))
     }
-    return res.status(201).json(item)
+    return res.json(item)
 
   }  catch (error) {
-    res.status(400).send({
+    res.send({
       success: false,
       message: error.message,
     });
@@ -130,13 +130,13 @@ const deleteItem = async(req , res) => {
     const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
   
     if (!isValidObjectId) {
-      return res.status(400).json({ message: 'Invalid item ID' });
+      return res.json({ message: 'Invalid item ID' });
     }
      const item = await Item.findByIdAndDelete(id)
      if(!item){
-      return(res.status(404).json({  success: false, message : 'item not found'}))
+      return(res.json({  success: false, message : 'item not found'}))
     }
-    return res.status(200).send({ success: true , message :'Deleted Successfully'})
+    return res.send({ success: true , message :'Deleted Successfully'})
 
   }  catch (error) {
     res.send({

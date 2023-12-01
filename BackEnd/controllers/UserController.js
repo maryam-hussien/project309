@@ -9,7 +9,7 @@ const registerUser = async (req, res) => {
   try {
     const { name , email , password , role , profilePicture} = req.body
     if(!name || !email || !password){
-      return res.status(403).send({
+      return res.send({
         success: false,
         message: "All Name , Email and  Password are required",
       });
@@ -17,7 +17,7 @@ const registerUser = async (req, res) => {
     //check if users exists
     const userExist= await User.findOne({email})
     if (userExist){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "User already existed",
       });
@@ -34,7 +34,7 @@ const registerUser = async (req, res) => {
       profilePicture,
     })
      if (user){
-      return res.status(201).send({
+      return res.send({
         success: true,
         message: "User created successfully",
         _id: user.id,
@@ -45,7 +45,7 @@ const registerUser = async (req, res) => {
       });
      }
      else{
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: " Invalid User",
       });
@@ -64,7 +64,7 @@ const LoginUser = async (req, res) => {
   try {
     const { email , password } = req.body
     if(!email || !password){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "Both Email and Password are required",
       });
@@ -72,7 +72,7 @@ const LoginUser = async (req, res) => {
     //check if users exists
     const user= await User.findOne({email})
     if (user && await bycrpt.compare(password , user.password)){
-      return res.status(200).send({
+      return res.send({
         success: true,
         message: "Logged In",
           _id: user.id,
@@ -83,7 +83,7 @@ const LoginUser = async (req, res) => {
     }
 
      else{
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: " Invalid User",
       });
@@ -102,12 +102,12 @@ const getById = async (req , res) => {
   try{
     const user = await User.findById(req.user.id)
     if(!user){
-      return res.status(404).send({
+      return res.send({
         success: false,
         message: " not foundUser",
       });
     }
-    res.status(200).send(user); 
+    res.send(user); 
   } catch (error) {
     res.send({
       success: false,
@@ -140,12 +140,12 @@ const editUser = async(req , res) => {
 
    const userr = await User.findByIdAndUpdate(req.user.id ,update, {new : true})
    if(!userr){
-    return res.status(404).send({
+    return res.send({
       success: false,
       message: " not authorized User",
     });
    }
-   return res.status(201).json(userr)
+   return res.json(userr)
   }catch (error) {
     res.send({
       success: false,
@@ -159,12 +159,12 @@ const deleteUser = async(req , res) => {
     const userr = await User.findByIdAndDelete(req.user.id)
 
     if(!userr){
-      return res.status(400).send({
+      return res.send({
        success: false,
        message: " not authorized User",
      });
     }
-    return res.status(200).send({
+    return res.send({
       success: true,
       message:"deleted succesfully",
     });
@@ -185,7 +185,7 @@ const getAll =  async (req , res) => {
       return  res.json(all)
     }
     else{
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "only admins can view all data",
       });
