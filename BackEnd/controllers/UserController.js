@@ -6,7 +6,7 @@ const registerUser = async (req, res) => {
   try {
     const { name , email , password , role , profilePicture} = req.body
     if(!name || !email || !password){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "All Name , Email and  Password are required",
       });
@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
     //check if users exists
     const userExist= await User.findOne({email})
     if (userExist){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "User already existed",
       });
@@ -42,7 +42,7 @@ const registerUser = async (req, res) => {
       });
      }
      else{
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: " Invalid User",
       });
@@ -59,40 +59,44 @@ const registerUser = async (req, res) => {
 
 const LoginUser = async (req, res) => {
   try {
-    const { email , password } = req.body
-    if(!email || !password){
+    const { email, password } = req.body;
+
+    // Check if both email and password are provided
+    if (!email || !password) {
       return res.status(400).send({
         success: false,
         message: "Both Email and Password are required",
       });
     }
-    //check if users exists
-    const user= await User.findOne({email})
-    if (user && await bycrpt.compare(password , user.password)){
-      return res.status(200).send({
-        success: true,
-        message: "Logged In",
-          _id: user.id,
-          name: user.name,
-          email: user.email,
-          token: generateToken(user._id),
+
+    // Validate the user (Replace this with your actual validation logic)
+    const user = await User.findOne({ email, password });
+
+    if (!user) {
+      return res.status(401).send({
+        success: false,
+        message: "Invalid email or password",
       });
     }
-   
-     else{
-      return res.status(400).send({
-        success: false,
-        message: " Invalid User",
-      });
-     }
-    
+
+    // User is valid, generate a token and send a success response
+    res.status(200).send({
+      success: true,
+      message: "Login successful",
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
   } catch (error) {
-    res.status(400).send({
+    console.error("Login Error:", error);
+    res.status(500).send({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
+
 
 //access private
 const GetById = async (req , res) => {
