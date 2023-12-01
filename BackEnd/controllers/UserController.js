@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken")
 const bycrpt = require("bcryptjs")
@@ -96,7 +95,7 @@ const LoginUser = async (req, res) => {
 };
 
 //access private
-const GetMe = async (req , res) => {
+const GetById = async (req , res) => {
   const { _id , name , email , role , profilePicture} = await User.findById(req.user.id)
 
   res.status(200).send({
@@ -183,8 +182,9 @@ const getAll =  async (req , res) => {
 module.exports = {
   registerUser,
   LoginUser,
-  GetMe,
+  GetById,
   editUser,
   deleteUser,
-  getAll
+  getAll,
+  generateToken
 };

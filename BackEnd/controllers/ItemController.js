@@ -110,7 +110,7 @@ const deleteItem = async(req , res) => {
     if (!isValidObjectId) {
       return res.status(400).json({ message: 'Invalid book ID' });
     }
-     const item = await Book.findByIdAndDelete(id)
+     const item = await Item.findByIdAndDelete(id)
      if(!item){
       return(res.status(404).json({  success: false, message : 'item not found'}))
     }
