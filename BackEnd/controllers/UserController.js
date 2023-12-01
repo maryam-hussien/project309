@@ -1,3 +1,4 @@
+const router = require("express").Router();
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken")
 const bycrpt = require("bcryptjs")
@@ -6,7 +7,7 @@ const registerUser = async (req, res) => {
   try {
     const { name , email , password , role , profilePicture} = req.body
     if(!name || !email || !password){
-      return res.send({
+      return res.status(403).send({
         success: false,
         message: "All Name , Email and  Password are required",
       });
@@ -14,7 +15,7 @@ const registerUser = async (req, res) => {
     //check if users exists
     const userExist= await User.findOne({email})
     if (userExist){
-      return res.send({
+      return res.status(400).send({
         success: false,
         message: "User already existed",
       });
@@ -38,16 +39,16 @@ const registerUser = async (req, res) => {
         name: user.name,
         email: user.email,
         token: generateToken(user._id),
-        
+
       });
      }
      else{
-      return res.send({
+      return res.status(400).send({
         success: false,
         message: " Invalid User",
       });
      }
-    
+
   } catch (error) {
     res.send({
       success: false,
@@ -59,58 +60,59 @@ const registerUser = async (req, res) => {
 
 const LoginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
-
-    // Check if both email and password are provided
-    if (!email || !password) {
+    const { email , password } = req.body
+    if(!email || !password){
       return res.status(400).send({
         success: false,
         message: "Both Email and Password are required",
       });
     }
-
-    // Validate the user (Replace this with your actual validation logic)
-    const user = await User.findOne({ email, password });
-
-    if (!user) {
-      return res.status(401).send({
-        success: false,
-        message: "Invalid email or password",
+    //check if users exists
+    const user= await User.findOne({email})
+    if (user && await bycrpt.compare(password , user.password)){
+      return res.status(200).send({
+        success: true,
+        message: "Logged In",
+          _id: user.id,
+          name: user.name,
+          email: user.email,
+          token: generateToken(user._id),
       });
     }
 
-    // User is valid, generate a token and send a success response
-    res.status(200).send({
-      success: true,
-      message: "Login successful",
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      token: generateToken(user._id),
-    });
+     else{
+      return res.status(400).send({
+        success: false,
+        message: " Invalid User",
+      });
+     }
+
   } catch (error) {
-    console.error("Login Error:", error);
-    res.status(500).send({
+    res.send({
       success: false,
-      message: "Internal Server Error",
+      message: error.message,
     });
   }
 };
 
-
 //access private
-const GetById = async (req , res) => {
-  const { _id , name , email , role , profilePicture} = await User.findById(req.user.id)
-
-  res.status(200).send({
-    message: "display All data",
-    _id: _id,
-    name,
-    email,
-    role,
-    profilePicture
-  }); 
-} 
+const getById = async (req , res) => {
+  try{
+    const user = await User.findById(req.user.id)
+    if(!user){
+      res.status(404).send({
+        success: false,
+        message: " not foundUser",
+      });
+    }
+    res.status(200).send(user); 
+  } catch (error) {
+    res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
 
 //generate jwt 
@@ -125,14 +127,14 @@ const editUser = async(req , res) => {
    const userr = await User.findByIdAndUpdate(req.user.id ,req.body, {new : true})
 
    if(!userr){
-    res.status(400).send({
+    res.status(404).send({
       success: false,
       message: " not authorized User",
     });
    }
    res.status(201).json(userr)
   }catch (error) {
-    res.status(400).send({
+    res.send({
       success: false,
       message: error.message,
     });
@@ -142,7 +144,7 @@ const editUser = async(req , res) => {
 const deleteUser = async(req , res) => {
   try{
     const userr = await User.findByIdAndDelete(req.user.id)
-    
+
     if(!userr){
      res.status(400).send({
        success: false,
@@ -154,7 +156,7 @@ const deleteUser = async(req , res) => {
       message:"deleted succesfully",
     });
    }catch (error) {
-     res.status(400).send({
+     res.send({
        success: false,
        message: error.message,
      });
@@ -167,7 +169,7 @@ const getAll =  async (req , res) => {
 
     if(userr.role == "admin"){
       const all = await User.find()
-      res.status(200).json(all)
+      res.json(all)
     }
     else{
       res.status(400).send({
@@ -186,9 +188,8 @@ const getAll =  async (req , res) => {
 module.exports = {
   registerUser,
   LoginUser,
-  GetById,
+  GetMe,
   editUser,
   deleteUser,
-  getAll,
-  generateToken
+  getAll
 };
