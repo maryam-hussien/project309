@@ -1,0 +1,125 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Lucida Handwriting;
+}
+.navbar{
+    background: #CA5252C7;
+
+    margin: 0px;
+    height: inherit;
+    width: 200dvb;
+    font-family: Lucida Handwriting;
+font-size: 28px;
+font-style: italic;
+font-weight: 400;
+line-height: 50px;
+letter-spacing: 0em;
+text-align: center;
+
+  }
+  .nav1 {
+    list-style-type: none;
+    background-color : hsl(0, 50%, 50%);
+    padding: 0px;
+    color: #FFFFBA;
+    margin: 0px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .nav1 h1{
+  top:10px;
+ position: relative;
+ display: flex;
+    justify-content: center;
+    bottom: 10px;
+  }
+  .right{
+
+    height: 46px;
+  display: flex;
+  top:20px;
+  position: relative;
+  }
+  .left{
+      height: 46px;
+    display: flex;
+    top:20px;
+    position: relative;
+    
+  }
+  .navbar div{
+    
+    margin: 0px;
+  }
+  .navbar ul{
+    list-style-type: none;
+    background-color : hsl(0, 50%, 50%);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+  }
+  .navbar a{
+    color: hsl(60, 70%, 86%);
+    padding: 15px;
+    display: block;
+    text-align: center;
+  }
+  .navbar a:hover{
+    background-color: hsl(0, 25%, 50%) ;
+  }
+  .navbar li{
+    float: left;
+    color: #FFFFBA;
+  }
+  
+  .nav2{
+    background-color :  #FFFFBA;
+    margin: 0px;
+    height: inherit;
+    font-family: Lucida Handwriting;
+  font-size: 40px;
+font-weight: 400;
+letter-spacing: 0.06em;
+text-align: center;
+  }
+  .navbar2 div{
+    
+    margin: 0px;
+  }
+  .navbar2 ul{
+    list-style-type: none;
+    background-color :  #FFFFBA;
+    padding: 1px;
+    margin: 1px;
+    overflow: hidden;
+  }
+  .navbar2 a{
+    color: hsl(60, 70%, 86%);
+    padding: 15px;
+    display: block;
+    text-align: center;
+  }
+  .navbar2 a:hover{
+    background-color: hsl(0, 25%, 50%) ;
+  }
+  .navbar2 li{
+    float: left;
+    color: hsl(0, 25%, 50%);
+  }
+  
+  .ProductList button{
+  
+    background-color:  hsl(0, 25%, 50%);
+    color: white;
+    font-size: 55dvb;
+    width: 55dvb;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0dvb;
+    padding: 0dvb;
+    user-select: none;
+    width: 11px; 
+  }
