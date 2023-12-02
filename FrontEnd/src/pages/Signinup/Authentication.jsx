@@ -1,114 +1,97 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import axios from 'axios';
 import './Authentication.css'
 import login from '../../assets/login.svg'
 import register from '../../assets/register.svg'
-import google from '../../assets/google.svg'
-import linkedin from '../../assets/linkedin.svg'
-import facebook from '../../assets/facebook.svg'
-import twitter from '../../assets/twitter.svg'
-import CustomButton from '../../componenet/CustomButton'; 
+import CustomButton from '../../componenet/button/CustomButton';
+import CustomInput from "../../componenet/input/CustomInput";
 function Authentication() {
-    const [SignUpMode, setSignUpMode] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
-    const SwitchMode = () =>{
-        setSignUpMode(!SignUpMode)
-    }
-    const validatePassword1 = () => {
-     
-      const isValid = password.length >= 6;
-      setPasswordError(isValid ? "" : "Password must be at least 6 characters");
-    };
-  
-    const validateAll = () => {
-      validateEmail();
-      validatePassword();
-    
-      if (emailError === "" && passwordError === "") {
-      }
-    };
-    const validateEmail = () => {
-      // Add your email validation logic here
-      // For example, a simple check for a valid email format
-      const isValid = /\S+@\S+\.\S+/.test(email);
-      setEmailError(isValid ? "" : "Invalid email address");
-    };
-    const validateEmail1 = () => {
-      // Add your email validation logic here
-      const isValid = /\S+@\S+\.\S+/.test(formData.email);
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        email: isValid ? "" : "Invalid email address",
-      }));
-    };
-   // Registration form state
-   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-
-  // Registration form error state
-  const [formErrors, setFormErrors] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-    checkbox: "",
-  });
-  // Validation functions
-  const validateUsername = () => {
-    setFormErrors((prevErrors) => ({
-      ...prevErrors,
-      name: formData.name.trim() ? "" : "Username is required",
-    }));
-  };
-
-
-  const validatePhone = () => {
-    // Add your phone validation logic here
-    setFormErrors((prevErrors) => ({
-      ...prevErrors,
-      phone: formData.phone.trim() ? "" : "Phone is required",
-    }));
-  };
-  const validatePassword = () => {
-    // Add your password validation logic here
-    setFormErrors((prevErrors) => ({
-      ...prevErrors,
-      password: formData.password.length >= 6 ? "" : "Password must be at least 6 characters",
-    }));
-  };
-
-  
-const validateForm = () => {
-  validateUsername();
-  validateEmail();
-  validatePassword();
-  if (
-    Object.values(formErrors).every((error) => !error) &&
-    Object.values(formData).every((value) => value !== "")
-  ) {
-    signIn(); 
+  const [SignUpMode, setSignUpMode] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const SwitchMode = () => {
+    setSignUpMode(!SignUpMode)
   }
-};
+  const [isSubmit, setisSubmit] = useState(false)
+  const validatePassword1 = () => {
+
+    const isValid = password.length >= 6;
+    setPasswordError(isValid ? "" : "Password must be at least 6 characters");
+  };
+
+
+  const validateEmail = () => {
+    const isValid = /\S+@\S+\.\S+/.test(email);
+    setEmailError(isValid ? "" : "Invalid email address");
+  };
+
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
+  const [formErrors, setFormErrors] = useState({ formData });
+
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const inputValue = type === "checkbox" ? checked : value;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: inputValue,
-    }));
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
-   
+
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log("Form submitted successfully", formData);
+
+    } else {
+      console.log("Form Errors:", formErrors);
+    }
+  }, [formErrors, isSubmit, formData]);
+
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    setisSubmit(true)
+    if (!values.name) {
+      errors.name = "Username is required";
+    }
+
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid Email";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+      errors.passwordLength = "Password must be at least 6 characters";
+    }
+
+    return errors;
+  };
+  const validate1 = (data) => {
+    const errors = {};
+    const isValidEmail = /\S+@\S+\.\S+/.test(data.email);
+    if (!isValidEmail) {
+      errors.email = "Invalid email address";
+    }
+
+    const isValidPassword = data.password.length >= 6;
+    if (!isValidPassword) {
+      errors.password = "Password must be at least 6 characters";
+    }
+
+    return errors;
+  };
+
   const signUp = async () => {
     try {
+      console.log("gg", formData);
       const response = await axios.post('http://localhost:5000/user/register', formData);
       console.log(response);
       if (response.data.success) {
@@ -121,197 +104,182 @@ const validateForm = () => {
       // Handle signup error here
     }
   };
-  
-  const signIn = async () => {
+
+  const signIn = async ({ email, password }) => {
     try {
-      console.log(email, password);
-      const response = await axios.post('http://localhost:5000/user/login', { "email":email, "password":password });
+      const response = await axios.post('http://localhost:5000/user/login', { email, password });
+
       console.log('SignIn Response:', response.data);
-      if (response.data.success) {
-        // Save token and user details to local storage
-        localStorage.setItem('token', response.data.token);
-        console.log("done");
-      }
+      return response.data;
     } catch (error) {
-      console.error('SignIn Error:', error.message);
-      // Handle signin error here
-    }
-  };
-  const handleSignUp = () => {
-    // validateAll();
-    console.log("gg",emailError,passwordError);
-    if (emailError === "" && passwordError === "") {
-      console.log("dd");
-      signUp();
+      console.error('SignIn Error:', error);
+      throw error;
     }
   };
 
-  const handleSignIn = () => {
-    // validateForm();
-    console.log("tt");
-    signIn();
-    if (
-      Object.values(formErrors).every((error) => !error) &&
-      Object.values(formData).every((value) => value !== "")
-    ) {
-      console.log("fw");
+
+
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const errors = validate(formData)
+    setFormErrors(errors)
+    console.log({
+      formData,
+      errors
+    })
+    if (Object.keys(errors).length === 0) {
+      signUp()
     }
   };
+
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
+    // Check if email and password are defined and not empty
+    if (email && password) {
+      const errors = validate1({ email, password });
+
+      if (Object.keys(errors).length === 0) {
+        try {
+          await signIn({ email, password });
+          console.log("Sign-in successful");
+        } catch (error) {
+          console.error('Sign-in Error:', error);
+        }
+      } else {
+        console.log('Validation errors:', errors);
+      }
+    } else {
+      console.error('Email and password must be provided');
+    }
+  };
+
+
+
 
   return (
     <div className={`container ${SignUpMode ? "sign-up-mode" : ""}`}>
 
-    <div className="forms-container">
-      <div className="signin-signup">
-        <form action="#" className="sign-in-form">
-          <h2 className="title">Sign in now</h2>
+      <div className="forms-container">
+        <div className="signin-signup">
+          <form action="#" className="sign-in-form">
+            <h2 className="title">Sign in now</h2>
 
-          <div className="input-field">
-            <i className="fas fa-envelope"></i>
-            <label id="email-label">Email</label>
-            <input
-                type="email"
-                spellCheck="false"
-                id="email-field"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onBlur={validateEmail}
-              />
-            <small id="email-error">{emailError}</small>
 
-          </div>
-          <div className="input-field">
-            <i className="fas fa-lock"></i>
-            <label id="password-label">Enter password</label>
-            <input
-                type="password"
-                id="password-field"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onBlur={validatePassword1}
-              />
-            <small id="password-error">{passwordError}</small>
-          </div>
-          <CustomButton type={"submit"} className={"btn"} onClick={handleSignIn} Name={"Sign in"}/>
-          {/* <input
-              type="button"
-              value="sign in"
-              className="btn solid"
-              onClick={handleSignIn}
-            /> */}
-          <p className="social-text">you can also sign in with</p>
-          <div className="social-media">
-          <img src={google} className="imagee" alt="google" />
-          <img src={facebook} className="imagee" alt="facebook" />
-          <img src={linkedin} className="imagee" alt="linkedin" />
-         <img src={twitter} className="imagee" alt="twitter" />
-          </div>
-        </form>
-        
-<form action="#" id="form" className="sign-up-form">
-  <h2 className="title">Register</h2>
-  <div className="input-field">
-      <i className="fas fa-user"></i>
-      <input
-                type="text"
-                placeholder="Name"
-                id="username"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                onBlur={validateUsername}
-                required
-              />
-      <div className="error" id="username-error">{formErrors.name}</div>
-  </div>
-  <div className="input-field">
-      <i className="fas fa-envelope"></i>
-      <input
-                type="email"
-                placeholder="Email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                onBlur={validateEmail1}
-                required
-              />
-      <div className="error" id="email-error">{formErrors.email}</div>
-  </div>
-  <div className="input-field">
-      <i className="fas fa-phone"></i>
-      <input
-                type="tel"
-                placeholder="Phone"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                onBlur={validatePhone}
-                required
-              />
-      <div className="error" id="phone-error">{formErrors.phone}</div>
-  </div>
-  <div className="input-field">
-      <i className="fas fa-lock"></i>
-      <input
-                type="password"
-                placeholder="Password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                onBlur={validatePassword}
-                required
-              />
-      <div className="error" id="password-error">{formErrors.password}</div>
-  </div>
-  <div>
-  </div>
+            <CustomInput
+              type={"email"}
+              spellCheck="false"
+              placeholder={"Enter Email"}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={validateEmail}
+            />
+            <small className="email-error">{emailError}</small>
 
-  <CustomButton type={"submit"} className={"btn"} onClick={handleSignUp} Name={"Sign up"}/>
- 
-  <p className="social-text">You can also sign up with</p>
-  <div className="social-media">
-              <img src={google} className="imagee" alt="google" />
-          <img src={facebook} className="imagee" alt="facebook" />
-          <img src={linkedin} className="imagee" alt="linkedin" />
-         <img src={twitter} className="imagee" alt="twitter" />
-  </div>
-</form>
+
+
+
+            <CustomInput
+              placeholder="Enter Password"
+              onChange={(e) => setPassword(e.target.value)}
+              onBlur={validatePassword1}
+            />
+            <small className="password-error">{passwordError}</small>
+
+            <CustomButton onClick={handleSignIn} Name="Sign in" />
+          </form>
+
+          <form action="#" id="form" className="sign-up-form">
+            <h2 className="title">Register</h2>
+
+
+
+            <CustomInput
+              type="text"
+              placeholder="Name"
+              Name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+
+            />
+
+
+            <div className="error" id="username-error">{formErrors.name}</div>
+
+
+
+            <CustomInput
+              type="text"
+              placeholder="Email"
+              Name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+
+            />
+            <div className="error" id="email-error">{formErrors.email}</div>
+
+
+
+            <CustomInput
+              type="tel"
+              placeholder={"Phone"}
+              Name={"phone"}
+
+              onChange={handleInputChange}
+            />
+
+
+
+            <CustomInput
+
+              type="password"
+              placeholder="Password"
+              Name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+
+            />
+            <div className="error" id="password-error">
+              {formErrors.Password ? formErrors.password : formErrors.passwordLength}
+            </div>
+
+
+            <div>
+            </div>
+            <CustomButton onClick={handleSignUp} Name={"Sign up"} />
+          </form>
+        </div>
       </div>
-    </div>
 
-    <div className="panels-container">
+      <div className="panels-container">
 
-      <div className="panel left-panel">
-        <div className="content">
+        <div className="panel left-panel">
+          <div className="content">
 
-          <h3>Don't have an account</h3>
-          <p>
-            create new account
-          </p>
-          <CustomButton type={"submit"} className={"btn transparent"} id="sign-up-btn" onClick={SwitchMode} Name={"Sign up"}/>
+            <h3>Don't have an account</h3>
+            <p>
+              create new account
+            </p>
+            <CustomButton onClick={SwitchMode} Name={"Sign up"} />
             <p>or</p>
-          <CustomButton  type={"submit"} className={"btn transparent"} id="go back" Name={"go back"} />
-          
+            <CustomButton Name={"go back"} />
+
+          </div>
+          <img src={register} className="image" alt="register" />
         </div>
-        <img src={register} className="image" alt="register" />
-      </div>
-      <div className="panel right-panel">
-        <div className="content">
-          <h3>Have an account?</h3>
-          <p>
-            you can sign in
-          </p>
-          <CustomButton className={"btn transparent"} id="sign-in-btn" onClick={SwitchMode} Name={'sign in'}/>
-           
-          
+        <div className="panel right-panel">
+          <div className="content">
+            <h3>Have an account?</h3>
+
+            <CustomButton onClick={SwitchMode} Name={'sign in'} />
+
+
+          </div>
+          <img src={login} className="image" alt="login" />
         </div>
-        <img src={login} className="image" alt="login" />
       </div>
     </div>
-  </div>
   )
 }
 

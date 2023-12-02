@@ -7,7 +7,7 @@ const registerUser = async (req, res) => {
   try {
     const { name , email , password , role , profilePicture} = req.body
     if(!name || !email || !password){
-      return res.status(400).send({
+      return res.status(403).send({
         success: false,
         message: "All Name , Email and  Password are required",
       });
@@ -39,7 +39,7 @@ const registerUser = async (req, res) => {
         name: user.name,
         email: user.email,
         token: generateToken(user._id),
-        
+
       });
      }
      else{
@@ -48,7 +48,7 @@ const registerUser = async (req, res) => {
         message: " Invalid User",
       });
      }
-    
+
   } catch (error) {
     res.send({
       success: false,
@@ -79,16 +79,16 @@ const LoginUser = async (req, res) => {
           token: generateToken(user._id),
       });
     }
-   
+
      else{
       return res.status(400).send({
         success: false,
         message: " Invalid User",
       });
      }
-    
+
   } catch (error) {
-    res.status(400).send({
+    res.send({
       success: false,
       message: error.message,
     });
@@ -96,18 +96,23 @@ const LoginUser = async (req, res) => {
 };
 
 //access private
-const GetMe = async (req , res) => {
-  const { _id , name , email , role , profilePicture} = await User.findById(req.user.id)
-
-  res.status(200).send({
-    message: "display All data",
-    _id: _id,
-    name,
-    email,
-    role,
-    profilePicture
-  }); 
-} 
+const getById = async (req , res) => {
+  try{
+    const user = await User.findById(req.user.id)
+    if(!user){
+      res.status(404).send({
+        success: false,
+        message: " not foundUser",
+      });
+    }
+    res.status(200).send(user); 
+  } catch (error) {
+    res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
 
 //generate jwt 
@@ -122,14 +127,14 @@ const editUser = async(req , res) => {
    const userr = await User.findByIdAndUpdate(req.user.id ,req.body, {new : true})
 
    if(!userr){
-    res.status(400).send({
+    res.status(404).send({
       success: false,
       message: " not authorized User",
     });
    }
    res.status(201).json(userr)
   }catch (error) {
-    res.status(400).send({
+    res.send({
       success: false,
       message: error.message,
     });
@@ -139,7 +144,7 @@ const editUser = async(req , res) => {
 const deleteUser = async(req , res) => {
   try{
     const userr = await User.findByIdAndDelete(req.user.id)
-    
+
     if(!userr){
      res.status(400).send({
        success: false,
@@ -151,7 +156,7 @@ const deleteUser = async(req , res) => {
       message:"deleted succesfully",
     });
    }catch (error) {
-     res.status(400).send({
+     res.send({
        success: false,
        message: error.message,
      });
@@ -164,7 +169,7 @@ const getAll =  async (req , res) => {
 
     if(userr.role == "admin"){
       const all = await User.find()
-      res.status(200).json(all)
+      res.json(all)
     }
     else{
       res.status(400).send({
@@ -183,7 +188,7 @@ const getAll =  async (req , res) => {
 module.exports = {
   registerUser,
   LoginUser,
-  GetMe,
+  getById,
   editUser,
   deleteUser,
   getAll
