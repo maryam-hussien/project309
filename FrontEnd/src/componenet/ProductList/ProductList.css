@@ -1,0 +1,29 @@
+.ProductList{
+    padding: 70px 0;
+    height: inherit;
+    margin: auto;
+    margin-top: 5dvb;
+    margin-right: 10dvb;
+    margin-left: 10dvb;
+    align-items: center;
+}
+.row{
+    gap:8px;
+}
+.ProductList h3{
+  
+    color: #BE4040;
+    padding: 2dvb;
+    font-family: Lucida Handwriting;
+font-size: 40px;
+font-style: italic;
+font-weight: 400;
+line-height: 66px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
