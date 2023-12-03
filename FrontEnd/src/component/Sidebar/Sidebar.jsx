@@ -1,7 +1,10 @@
 import '../Sidebar/sidebar.css'
-import LineStyleIcon from '@mui/icons-material/LineStyle';
-import TimelineIcon from '@mui/icons-material/Timeline';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import PersonIcon from '@mui/icons-material/Person';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import HomeIcon from '@mui/icons-material/Home';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Sidebar() {
   return (
@@ -10,40 +13,48 @@ function Sidebar() {
             <div className="sidebarMenu">
                 <h3 className="sidebarTitle">Dashboard</h3>
                 <ul className="sidebarList">
-                    <li className="sidebarlistItem">
-                        <LineStyleIcon/>
-                        Home
-                    </li>
-                    <li className="sidebarlistItem">
-                        <TimelineIcon/>
-                        Analytics
-                    </li>
-                    <li className="sidebarlistItem">
-                        <TrendingUpIcon/>
-                        Sales
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div className="sidebarWrapper">
-            <div className="sidebarMenu">
-                <h3 className="sidebarTitle">Dashboard</h3>
-                <ul className="sidebarList">
                     <li className="sidebarlistItem active">
-                        <LineStyleIcon/>
+                        <HomeIcon className="sidebarIcon" />
                         Home
                     </li>
+                </ul>
+            </div>
+            <div className="sidebarMenu">
+                <h3 className="sidebarTitle">Quick Menu</h3>
+                <ul className="sidebarList">
                     <li className="sidebarlistItem">
-                        <TimelineIcon/>
-                        Analytics
+                        <PersonIcon className="sidebarIcon" />
+                        Users
                     </li>
                     <li className="sidebarlistItem">
-                        <TrendingUpIcon/>
-                        Sales
+                        <Inventory2Icon className='sidebarIcon' />
+                        Products
+                    </li>
+                    <li className="sidebarlistItem">
+                        <LocalMallIcon className="sidebarIcon"/>
+                        Orders
+                    </li>
+                </ul>
+            </div>
+            
+            <div className="sidebarMenu">
+                <h3 className="sidebarTitle">setting</h3>
+                <ul className="sidebarList">
+                    <li className="sidebarlistItem">
+                        <ShoppingBagIcon className="sidebarIcon" />
+                        Manage
+                    </li>
+                    <li className="log-out">
+                        <a href="st" >
+                            <LogoutIcon/>
+                                <p>Log Out</p>
+
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
+        
     </div>
   )
 }

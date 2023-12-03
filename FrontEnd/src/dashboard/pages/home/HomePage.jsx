@@ -2,6 +2,7 @@ import React from 'react'
 import './HomePage.css'
 import Topbar from '../../../component/Topbar/Topbar'
 import Sidebar from '../../../component/Sidebar/Sidebar'
+import DashHome from '../../../dashboard/pages/home/DashHome'
 
 function Home() {
   
@@ -10,7 +11,7 @@ function Home() {
       <Topbar/>
       <div className="container">
       <Sidebar/>
-      <div className="other"> otherpage </div>   
+       <DashHome/>
       </div> 
     </div>
   )
