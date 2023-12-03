@@ -1,6 +1,6 @@
 import '../Topbar/topbar.css';
 import SettingsIcon from '@mui/icons-material/Settings';
-import profileImg from '../../../src/assets/profile/profile.jpg';
+import profileImg from '../../../assets/profile/profile.jpg';
 
 
 function Topbar() {

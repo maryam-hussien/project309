@@ -24,6 +24,7 @@ const CustomButton = (props) => {
       style={btnStyles}
       onClick={onClick}>
      {Name}
+     
     </button>
   );
 };

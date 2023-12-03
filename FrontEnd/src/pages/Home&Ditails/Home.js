@@ -1,5 +1,5 @@
 import Navbar from '../../componenet/Navbar/Navbar';
-import '../../../src/App.css';
+// import '../../../src/App.css';
 import '../../componenet/Navbar/Navbar.css'
 import ProductList from '../../componenet/ProductList/ProductList';
 import ImageSlider from '../../componenet/ImageSlider/ImageSlider';

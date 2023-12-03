@@ -124,7 +124,8 @@ function Checkout() {
                 </div>
                 <div className="Buttons">
                     <CustomButon Name="Pay Now" onClick={handleSubmit}/>
-                    <CustomButon Name="Cancel" />
+                    import CustomButon from '../../componenet/button/CustomButton'
+
                 </div>
             </div>
             </div>
