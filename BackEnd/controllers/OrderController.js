@@ -37,13 +37,13 @@ const addOrder = async(req , res) => {
     });
    }
    if(!product){
-     res.status(404).send({
+     return res.status(404).send({
        success: false,
        message: "product not found",
      });
    }
     if( !shippingAddress1 || !city || !phone || !country  ){
-      res.status(400).send({
+      return res.status(400).send({
         success: false,
         message: "enter required data",
       });
@@ -54,10 +54,18 @@ const addOrder = async(req , res) => {
       phone,
       country,
       user: req.user.id,
-      product 
+      product: [{
+        item: product.item,
+        name: product.name,
+        type: product.type,
+        image: product.image,
+        price: product.price,
+        size: product.size,
+        description: product.description,
+      }],
     })
     if (order){
-      res.status(201).json(order)
+      return res.status(201).json(order)
     }
   } catch (error) {
     res.status(500).send({

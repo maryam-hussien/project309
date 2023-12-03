@@ -32,7 +32,7 @@ const registerUser = async (req, res) => {
       profilePicture,
     })
      if (user){
-      res.status(201).send({
+      return res.status(201).send({
         success: true,
         message: "User created successfully",
         _id: user.id,
@@ -100,7 +100,7 @@ const getById = async (req , res) => {
   try{
     const user = await User.findById(req.user.id)
     if(!user){
-      res.status(404).send({
+      return res.status(404).send({
         success: false,
         message: " not foundUser",
       });
@@ -127,12 +127,12 @@ const editUser = async(req , res) => {
    const userr = await User.findByIdAndUpdate(req.user.id ,req.body, {new : true})
 
    if(!userr){
-    res.status(404).send({
+    return res.status(404).send({
       success: false,
       message: " not authorized User",
     });
    }
-   res.status(201).json(userr)
+   return res.status(201).json(userr)
   }catch (error) {
     res.send({
       success: false,
@@ -146,12 +146,12 @@ const deleteUser = async(req , res) => {
     const userr = await User.findByIdAndDelete(req.user.id)
 
     if(!userr){
-     res.status(400).send({
+      return res.status(400).send({
        success: false,
        message: " not authorized User",
      });
     }
-    res.status(200).send({
+    return res.status(200).send({
       success: true,
       message:"deleted succesfully",
     });
@@ -169,12 +169,12 @@ const getAll =  async (req , res) => {
 
     if(userr.role == "admin"){
       const all = await User.find()
-      res.json(all)
+      return  res.json(all)
     }
     else{
-      res.status(400).send({
+      return res.status(400).send({
         success: false,
-        message: "omly admins can view all data",
+        message: "only admins can view all data",
       });
     }
   }catch (error) {
