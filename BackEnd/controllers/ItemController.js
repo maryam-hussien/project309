@@ -4,14 +4,14 @@ const getAll = async(req , res) => {
   try {
     const item = await Item.find()
     if(!item){
-      res.status(404).send({
+      return res.status(404).send({
         success: false,
         message: "no items",
       });
     }
-    res.status(200).json(item)
+    return res.status(200).json(item)
   }catch (error) {
-    res.send({
+    return res.send({
       success: false,
       message: error.message,
     });
@@ -42,14 +42,14 @@ const AddItem = async(req , res) => {
   try {
     const {name , type , price , image, size , description} = req.body
     if( !type || !price || !image){
-      res.status(400).send({
+      return res.status(400).send({
         success: false,
         message: "type , price and image are required",
       });
     }
     const itemExist = await Item.findOne({image})
     if( itemExist){
-      res.status(400).send({
+      return res.status(400).send({
         success: false,
         message: "item already existed",
       });
@@ -63,7 +63,7 @@ const AddItem = async(req , res) => {
       description
     })
      if (item){
-      res.status(201).json(item)
+      return res.status(201).json(item)
      }
   } catch (error) {
     res.status(400).send({
@@ -84,7 +84,7 @@ const editItem = async(req , res) => {
       return res.status(400).send({ success: false, message: 'Invalid Item ID' });
     }
     if( !type || !price || !image){
-      res.status(400).send({
+      return res.status(400).send({
         success: false,
         message: "type , price and image are required",
       });
@@ -108,7 +108,7 @@ const deleteItem = async(req , res) => {
     const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
   
     if (!isValidObjectId) {
-      return res.status(400).json({ message: 'Invalid book ID' });
+      return res.status(400).json({ message: 'Invalid item ID' });
     }
      const item = await Item.findByIdAndDelete(id)
      if(!item){
