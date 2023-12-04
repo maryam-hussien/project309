@@ -1,4 +1,4 @@
-import FeaturedInfo from '../../DashComponent/FeaturedInfo/FeaturedInfo'
+import FeaturedInfo from '../../../dashboard/DashComponent/FeaturedInfo/FeaturedInfo'
 import WidgetLg from '../../DashComponent/WidgetLg/WidgetLg'
 import './DashHome.css'
 

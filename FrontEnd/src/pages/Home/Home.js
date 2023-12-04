@@ -1,10 +1,15 @@
 import Navbar from '../../componenet/Navbar/Navbar';
 // import '../../../src/App.css';
+import Footer from '../../componenet/footer/Footer';
 import '../../componenet/Navbar/Navbar.css'
 import ProductList from '../../componenet/ProductList/ProductList';
 import ImageSlider from '../../componenet/ImageSlider/ImageSlider';
 import i from "../../componenet/Images/Image-1.jpg";
 import i2 from "../../componenet/Images/Image-2.jpg";
+<<<<<<< HEAD
+
+=======
+>>>>>>> bd0520c4b0b18482953917250c9de28da725591d
 const Slides=[i,i,i2]
 const containerStyles={height:'40dvb'}
 
@@ -16,10 +21,8 @@ function Home() {
         <div style={containerStyles}>
         <ImageSlider Slides={Slides}/>
         </div>
-         
-         
          <ProductList/>
-         
+         <Footer />
       </div>
     );
   }
