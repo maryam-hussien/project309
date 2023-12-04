@@ -2,6 +2,8 @@ const router = require("express").Router();
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken")
 const bycrpt = require("bcryptjs")
+const cloudinary = require('../utils/cloudinary');
+
 
 const registerUser = async (req, res) => {
   try {
@@ -124,8 +126,19 @@ const generateToken = (id) => {
 
 const editUser = async(req , res) => {
   try{
-   const userr = await User.findByIdAndUpdate(req.user.id ,req.body, {new : true})
+    const result = await cloudinary.uploader.upload(image, {
+      folder: "products",
+  })
+  const {name , image} = req.body
 
+  const update = {   
+    name,
+    image: {
+      public_id: result.public_id,
+      url: result.secure_url
+  },  }
+
+   const userr = await User.findByIdAndUpdate(req.user.id ,update, {new : true})
    if(!userr){
     return res.status(404).send({
       success: false,
