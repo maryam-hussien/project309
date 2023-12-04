@@ -1,10 +1,10 @@
 import '../Sidebar/sidebar.css'
+import CustomButon from '../../../componenet/button/CustomButton'
 import PersonIcon from '@mui/icons-material/Person';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
-import LogoutIcon from '@mui/icons-material/Logout';
 
 function Sidebar() {
   return (
@@ -45,11 +45,7 @@ function Sidebar() {
                         Manage
                     </li>
                     <li className="log-out">
-                        <a href="st" >
-                            <LogoutIcon/>
-                                <p>Log Out</p>
-
-                        </a>
+                    <CustomButon Name="LoggOtut" />
                     </li>
                 </ul>
             </div>
