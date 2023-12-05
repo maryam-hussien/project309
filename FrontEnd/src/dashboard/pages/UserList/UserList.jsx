@@ -7,8 +7,8 @@ import { useState } from "react";
 import { userRows } from "../../dummyData";
 
 function UserList() {
+  const getUsers = () => {};
   const [data, setData] = useState(userRows);
-  
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
