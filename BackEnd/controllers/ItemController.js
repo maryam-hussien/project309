@@ -1,7 +1,10 @@
 const Item = require("../models/itemModel")
+const cloudinary = require('../utils/cloudinary');
+
 
 const getAll = async(req , res) => {
   try {
+    
     const item = await Item.find()
     if(!item){
       return res.status(404).send({
@@ -41,6 +44,9 @@ const getById = async(req , res) => {
 const AddItem = async(req , res) => {
   try {
     const {name , type , price , image, size , description} = req.body
+    const result = await cloudinary.uploader.upload(image, {
+      folder: "products",
+  })
     if( !type || !price || !image){
       return res.status(400).send({
         success: false,
@@ -58,7 +64,10 @@ const AddItem = async(req , res) => {
       name,
       type,
       price,
-      image,
+      image: {
+        public_id: result.public_id,
+        url: result.secure_url
+    },
       size,
       description
     })
@@ -74,11 +83,23 @@ const AddItem = async(req , res) => {
 }
 const editItem = async(req , res) => {
   try {
+    const result = await cloudinary.uploader.upload(image, {
+      folder: "products",
+  })
     const {name , type , price , image, size , description} = req.body
 
     const id = req.params.id
     const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
-    const update = {name , type , price , image, size , description}
+    const update = {name ,
+        type ,
+        price ,
+        image: {
+          public_id: result.public_id,
+          url: result.secure_url
+        },
+        size ,
+        description
+      }
 
     if (!isValidObjectId) {
       return res.status(400).send({ success: false, message: 'Invalid Item ID' });

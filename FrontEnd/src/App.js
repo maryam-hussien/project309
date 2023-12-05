@@ -19,8 +19,9 @@ function App() {
       {/* <HomePage/> */}
       <Routes>
         <Route path="/" element={<Home1 />} />
-        <Route path="/" element={<Checkout />} />
-        <Route path="/" element={<Authentication />} />
+        <Route path="/cart/checkout" element={<Checkout />}/>
+        <Route path="/auth" element={<Authentication />}/>
+        <Route path="/dashboard/home" element={<Home />}/>
 
 
 
