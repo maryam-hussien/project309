@@ -9,9 +9,10 @@ function Products(props) {
                 <img src={props.product.image} alt={props.product.title}></img>
                 <p>{props.product.description}</p>
                 <h6>Price: {props.product.price}</h6>
-                <button onClick={() => { console.log('You are going to buy this product', props.product.price) }}>
+                <button onClick={()=>{console.log('you are going to bur this product',props.product.price)}}>
                     Details
-                </button>
+                    </button>
+                  
             </div>
         </>
     );
