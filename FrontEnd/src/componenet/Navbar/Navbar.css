@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: Lucida Handwriting;
+  /* font-family: Lucida Handwriting; */
 }
 .navbar{
     background: #BE4040;
@@ -57,6 +57,7 @@ text-align: center;
   .Home h1{
    font-size: 25px;
     margin-top: 10px;
+    margin-left: 30px;
     }
   .navbar ul{
     list-style-type: none;

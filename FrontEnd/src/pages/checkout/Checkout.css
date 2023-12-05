@@ -1,17 +1,16 @@
 *{
     margin:0;
     padding: 0;
-    font-family: Lucida Handwriting;
 }
 
-.container p{
+.container2 p{
     display: flex;
     margin-left: 18px;
     margin-top: 37px;
     font-size: 19px;
 
 }
-.container h1{
+.container2 h1{
     margin-top: 25px;
 
 }

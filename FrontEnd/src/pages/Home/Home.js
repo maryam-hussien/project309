@@ -1,5 +1,5 @@
 import Navbar from '../../componenet/Navbar/Navbar';
-// import '../../../src/App.css';
+import Footer from '../../componenet/footer/Footer';
 import '../../componenet/Navbar/Navbar.css'
 import ProductList from '../../componenet/ProductList/ProductList';
 import ImageSlider from '../../componenet/ImageSlider/ImageSlider';
@@ -16,10 +16,8 @@ function Home() {
         <div style={containerStyles}>
         <ImageSlider Slides={Slides}/>
         </div>
-         
-         
          <ProductList/>
-         
+         <Footer />
       </div>
     );
   }
