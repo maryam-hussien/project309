@@ -1,7 +1,16 @@
 .DashHome{
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
+    width: 100%;
     flex: 12;
+    flex-direction: column;
+
 }
 .homeWidgets{
+    display: flex;
+    margin: 20px;
+}
+.UserList{
     display: flex;
     margin: 20px;
 }
