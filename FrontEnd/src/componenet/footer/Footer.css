@@ -7,14 +7,14 @@
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     height:200px;
-    color:  #FFFFBA;
-    background-color: hsl(0, 50%, 50%);
+    color:  #FFF;
+    background-color: #CA5252C7;
 }
 .footer h1{
     text-align: center;
      top: 20px;
      position: relative;
-    font-size: 40px;
+    font-size: 30px;
 }
 .icon{
     display: flex;
@@ -36,7 +36,6 @@
     font-size: 25px;
 }
 .title h1{
-    color:  #FFFFBA;
+    color:  #FFF;
     font-size: 20px;
-    background-color: hsl(0, 50%, 50%);
 }

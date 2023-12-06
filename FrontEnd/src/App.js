@@ -13,6 +13,7 @@ import Navbar from "./componenet/Navbar/Navbar"
 import Footer from "./componenet/footer/Footer"
 import Details from "./pages/Details/Details"
 
+
 function App() {
   return (
     <div className="App">

@@ -26,8 +26,6 @@
    font-size:10px;
    background-color: #BE4040;
    border: #BE4040;
-   border-radius: 5px;
-   
 }
 .card p{
     margin-top: 8px;
@@ -82,8 +80,5 @@
         padding: 15px;
         color: #BE4040;
         background-color: #FFFFBA;
-       
-     
-    
     }
 }
