@@ -1,6 +1,7 @@
 .leftArrowStyles{
     position: relative;
     top:25vh;
+    cursor: pointer;
     margin-left: 60px;
     margin-right: 10px;
     width: 40px;
@@ -8,6 +9,7 @@
 .RightArowStyles{
     position: relative;
     top:25vh;
+    cursor: pointer;
     margin-right: 60px;
     margin-left: 10px;
     width: 40px;

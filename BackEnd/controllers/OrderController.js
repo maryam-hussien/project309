@@ -76,7 +76,7 @@ const addOrder = async(req , res) => {
 }
 
 const editOrder = async(req , res) => {
-  const userr  = await User.findById(req.user.id)
+ try{ const userr  = await User.findById(req.user.id)
     const id = req.params.id
     const { shippingAddress1 ,city ,phone , country} = req.body
     const update = req.body
@@ -91,6 +91,12 @@ const editOrder = async(req , res) => {
       return(res.status(404).send({success: false, message : 'order not found'}))
     }
     return res.status(201).json(order)
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      message: error.message,
+    });
+  }
 }
 const deleteOrder = async (req , res) => {
 try{

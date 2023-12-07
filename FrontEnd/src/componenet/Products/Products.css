@@ -3,9 +3,9 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    width:330px;
+    width:250px;
     justify-content: center;
-    height: 380px;
+    height: 370px;
     margin: 3px;
     padding: 15px;
     color: #BE4040;
@@ -20,31 +20,65 @@
     height: 180px;
 }
 .card button{
-   width: 100px;
-   margin-top: 20px;
-   display: flex;
-   justify-content: center;
-   padding:15px 30px ;
-   font-size: 12px;
+   margin-top: 10px;
+   gap: 7px;
+   padding:15px 35px;
+   font-size:10px;
    background-color: #BE4040;
    border: #BE4040;
-   border-radius: 5px;
 }
-
+.card p{
+    margin-top: 8px;
+    font-size: 12px;
+}
+.button1{
+    display: flex;
+    flex-direction:column;
+ 
+}
+.button1 .button3{
+    width: 100%;
+    background-color: #BE4040;
+    border: 1px solid white;
+    border-radius: 12px;
+    justify-content: center;
+    height: 44px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: 0.5s;
+}
+ .button1 .button2{
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #BE4040;
+    border-radius: 12px;
+    justify-content: center;
+    height: 44px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: 0.5s;
+}
 @media(min-width:320px) and (max-width:425px){
     .card{
         border-bottom-right-radius: 30px;
         border-top-left-radius: 30px;
         border-top-right-radius: 3px;
         border-bottom-left-radius: 3px;
-        width:330px;
+        width:230px;
         height: 380px;
         margin: 3px;
         padding: 15px;
         color: #BE4040;
         background-color: #FFFFBA;
-       
-     
-    
     }
 }

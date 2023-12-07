@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import "../checkout/Checkout.css";
 import CustomInput from "../../componenet/input/CustomInput";
-import CustomButon from "../../componenet/button/CustomButton";
 function Checkout() {
   const [formData, setFormData] = useState({
     email: "",
@@ -56,8 +55,8 @@ function Checkout() {
       <div className="container2">
         <h1>Check out</h1>
         <p>fill your details</p>
-        <div className="all">
-          <div className="box">
+        <div className="alll">
+          <div className="boxes">
             <div className="box-content">
               <div className="pp">
                 <p>Subtotal :</p>
@@ -68,9 +67,9 @@ function Checkout() {
             </div>
           </div>
           <div className="form">
-            <div className="input-field">
+            <div className="input-fieldd">
               <label htmlFor="email">Email :</label>
-              <div className="input-width">
+              <div className="input-widthh">
                 <CustomInput
                   type="email"
                   placeholder="Enter your email"
@@ -83,9 +82,9 @@ function Checkout() {
                 )}
               </div>
             </div>
-            <div className="input-field">
+            <div className="input-fieldd">
               <label htmlFor="address">Address : </label>
-              <div className="input-width">
+              <div className="input-widthh">
                 <CustomInput
                   type="text"
                   placeholder=" enter your Address"
@@ -94,9 +93,9 @@ function Checkout() {
               </div>
             </div>
 
-            <div className="input-field">
+            <div className="input-fieldd">
               <label htmlFor="City">City : </label>
-              <div className="input-width">
+              <div className="input-widthh">
                 <CustomInput
                   type="text"
                   placeholder="enter your city"
@@ -104,9 +103,9 @@ function Checkout() {
                 />
               </div>
             </div>
-            <div className="input-field">
+            <div className="input-fieldd">
               <label htmlFor="phone">Phone :</label>
-              <div className="input-width">
+              <div className="input-widthh">
                 <CustomInput
                   type="phone"
                   placeholder="Enter your phone"
@@ -120,9 +119,9 @@ function Checkout() {
               </div>
             </div>
 
-            <div className="input-field">
+            <div className="input-fieldd">
               <label htmlFor="note">Note :</label>
-              <div className="input-width">
+              <div className="input-widthh">
                 <CustomInput
                   type="text"
                   placeholder="enter your note"
@@ -130,11 +129,12 @@ function Checkout() {
                 />
               </div>
             </div>
+            <div className="Buttons">
+            <button onClick={handleSubmit}>Pay Now</button>
+            <button>cancel</button>
           </div>
-          <div className="Buttons">
-            <CustomButon Name="Pay Now" onClick={handleSubmit} />
-            <CustomButon Name="Cancel" />
           </div>
+         
         </div>
       </div>
     </>
