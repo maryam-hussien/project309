@@ -2,7 +2,21 @@ import './Navbar.css';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 function Navbar(){
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null)
+  const getUser = () =>{
+    setUser(localStorage.getItem("token")); 
+  }
+  useEffect(() => {
+    getUser();
+  }, [user])
+  
+  const auth =() => {
+      navigate("/auth")
+  }
     return(
         <>
       <div className='nav1'>
@@ -15,9 +29,9 @@ function Navbar(){
         </div>
        <p>Archi-wood</p>
        <div className='icons'>
-        <PersonOutlinedIcon />
+        {user ? <PersonOutlinedIcon /> :<button className='log' onClick={auth}>login</button>}
         <LocalMallOutlinedIcon />
-        <button className='log'>login</button>
+       
        </div>
       </div>
         

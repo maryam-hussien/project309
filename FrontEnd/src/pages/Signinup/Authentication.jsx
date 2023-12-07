@@ -6,14 +6,19 @@ import login from '../../assets/login.svg'
 import register from '../../assets/register.svg'
 import CustomButton from '../../componenet/button/CustomButton';
 import CustomInput from "../../componenet/input/CustomInput";
+import { useNavigate } from "react-router-dom";
 function Authentication() {
   const [SignUpMode, setSignUpMode] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
   const SwitchMode = () => {
     setSignUpMode(!SignUpMode)
+  }
+  const goBack = () => {
+    navigate("/")
   }
   const [isSubmit, setisSubmit] = useState(false)
   const validatePassword1 = () => {
@@ -96,8 +101,9 @@ function Authentication() {
       console.log(response);
       if (response.data.success) {
         // Save token and user details to local storage
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', "Bearer "+response.data.token);
         console.log("done");
+        navigate("/")
       }
     } catch (error) {
       console.error('SignUp Error:', error.message);
@@ -108,12 +114,15 @@ function Authentication() {
   const signIn = async ({ email, password }) => {
     try {
       const response = await axios.post('http://localhost:5000/user/login', { email, password });
-
-      console.log('SignIn Response:', response.data);
-      return response.data;
+      if (response.data.status) {
+        console.log('SignIn Response:', response.data);
+        localStorage.setItem('token', "Bearer "+response.data.token);
+        navigate("/")
+      } else {
+        alert(response.data.message)
+      }
     } catch (error) {
       console.error('SignIn Error:', error);
-      throw error;
     }
   };
 
@@ -182,6 +191,7 @@ function Authentication() {
 
             <CustomInput
               placeholder="Enter Password"
+              type="password"
               onChange={(e) => setPassword(e.target.value)}
               onBlur={validatePassword1}
             />
@@ -263,7 +273,7 @@ function Authentication() {
             </p>
             <CustomButton onClick={SwitchMode} Name={"Sign up"} />
             <p>or</p>
-            <CustomButton Name={"go back"} />
+            <CustomButton onClick={goBack} Name={"go back"} />
 
           </div>
           <img src={register} className="image" alt="register" />
@@ -273,8 +283,8 @@ function Authentication() {
             <h3>Have an account?</h3>
 
             <CustomButton onClick={SwitchMode} Name={'sign in'} />
-
-
+            <p>or</p>
+            <CustomButton Name={"go back"} onClick={goBack}/>
           </div>
           <img src={login} className="image" alt="login" />
         </div>
