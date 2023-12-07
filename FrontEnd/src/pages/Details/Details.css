@@ -24,6 +24,7 @@
     background-color:rgb(255, 251, 236);
     overflow: hidden;
     margin-left: 10px;
+    margin-right: 10px;
     width: 100%;
     max-width: 600px;
 }
@@ -41,8 +42,10 @@
 .box2{
     max-width: 610px;
     max-height: 390px;
-    margin: 0px;
-    background-color:rgb(255, 251, 236);;
+    background-color:rgb(255, 251, 236);
+    margin-left: 10px;
+    margin-top: 10px;
+
     
 }
 .box2 h5{
@@ -52,10 +55,11 @@
 .dis2{
     
     background-color: rgb(255, 251, 236);
-    margin: 30px 0;
-    font-size: 18px;
-    
-    
+    margin: 10px 0;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-right: 10px;
     
 }
 
@@ -66,8 +70,9 @@
 }
  .row2 h2{
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     font-size:20px ;
+    margin-bottom: 10px;
     
 }
 
@@ -85,7 +90,7 @@
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 6px;
-     
+     margin-left: 15px;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -101,7 +106,7 @@
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 6px;
-     
+     margin-left: 15px;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -120,19 +125,19 @@ font-weight: 600;
 margin-bottom: 10px;
 cursor: pointer;
 transition: 0.5s;
-margin-left: 5px;
+margin-left: 15px;
 }
 .countb{
     margin-top: 10px;
 }
 
    .bmax{
-    font-size: 30px;
-    width: 50px;
-    height: 30px;
+    font-size: 33px;
+    width: 48px;
+    height: 25px;
     background-color:  #fff;
     border: 0px solid #BE4040;
-    border-radius: 12px;
+   margin: 1px;
     outline: none;
     color: #BE4040;
     text-transform: uppercase;
@@ -143,12 +148,12 @@ margin-left: 5px;
    }
 
    .bmin{
-    font-size: 30px;
-    width: 46px;
+    font-size: 33px;
+    width: 40px;
     height: 30px;
     background-color:  #fff;
     border: 0px solid #BE4040;
-    border-radius: 12px;
+  
     outline: none;
     color: #BE4040;
     text-transform: uppercase;
@@ -159,13 +164,54 @@ margin-left: 5px;
    }
 
 
-@media (max-width:200px) {
-    .thumb2{height: 50px;
-        width: 50px;
+@media (max-width:450px) {
+    .dis2{
+        font-size: 15px;
+       
     }
-    .thumb2 img{
-        width: 50px;
+    .bmin{
+        font-size: 25px;
+        width: 18px;
+        height: 10px;
+        
+       }
+       .bmax{
+        font-size: 25px;
+        width: 20px;
+        height: 10px;
+
+        
+       }
+    
+       .countb{
+        margin-top: 5px;
+        font-size: 15px;
     }
+    .thumb2{
+        height: 25px;
+        width: 60px;
+        border-radius: 6px;
+        outline: none;
+        
+         
+
+    }
+    .add-card2 .ato{
+        width: 120px;
+        height: 35px;
+    }
+    .add-card2 .bto{
+        width: 120px;
+        height: 35px;
+    }
+    .box2 h5{
+        font-size: 15px;
+    }
+    .Details3{
+        margin-top: 30px;
+    }
+
+    
 }
 
 
