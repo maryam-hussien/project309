@@ -18,12 +18,6 @@
     font-weight: 600;
     margin-bottom: 10px;
   }
-  .addProductTitle{
-    color: #BE4040;
-    align-items: center;
-    
-    margin-left: 20;
-  }
   
   .addProductItem > input {
     padding: 10px;

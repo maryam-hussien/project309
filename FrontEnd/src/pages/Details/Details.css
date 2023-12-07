@@ -22,7 +22,6 @@
     background-color:rgb(255, 251, 236);
     overflow: hidden;
     margin-left: 10px;
-    margin-right: 10px;
     width: 100%;
     max-width: 600px;
 }
@@ -39,12 +38,11 @@
 .box2{
     max-width: 610px;
     max-height: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px;
     background-color:rgb(255, 251, 236);
-    margin-left: 10px;
-    margin-top: 10px;
-
-    
-
 }
 .box2 h5{
     font-size: 20px;
@@ -53,12 +51,10 @@
 .dis2{
     
     background-color: rgb(255, 251, 236);
-    margin: 10px 0;
-    font-size: 20px;
-    margin-left: 15px;
-    margin-top: 10px;
-    margin-right: 10px;
-
+    margin: 30px 0;
+    font-size: 18px;
+   
+    
     
 }
 
@@ -70,11 +66,9 @@
 }
  .row2 h2{
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     font-size:20px ;
-    margin-bottom: 10px;
-    
-
+    margin-top: 30px;
 }
 
 
@@ -91,7 +85,7 @@
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 6px;
-     margin-left: 15px;
+     
     cursor: pointer;
     transition: 0.5s;
 }
@@ -107,7 +101,7 @@
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 6px;
-     margin-left: 15px;
+     
     cursor: pointer;
     transition: 0.5s;
 }
@@ -126,19 +120,19 @@ font-weight: 600;
 margin-bottom: 10px;
 cursor: pointer;
 transition: 0.5s;
-margin-left: 15px;
+margin-left: 5px;
 }
 .countb{
     margin-top: 10px;
 }
 
    .bmax{
-    font-size: 33px;
-    width: 48px;
-    height: 25px;
+    font-size: 30px;
+    width: 50px;
+    height: 30px;
     background-color:  #fff;
     border: 0px solid #BE4040;
-   margin: 1px;
+    border-radius: 12px;
     outline: none;
     color: #BE4040;
     text-transform: uppercase;
@@ -149,12 +143,12 @@ margin-left: 15px;
    }
 
    .bmin{
-    font-size: 33px;
-    width: 40px;
+    font-size: 30px;
+    width: 46px;
     height: 30px;
     background-color:  #fff;
     border: 0px solid #BE4040;
-  
+    border-radius: 12px;
     outline: none;
     color: #BE4040;
     text-transform: uppercase;
@@ -165,55 +159,49 @@ margin-left: 15px;
    }
 
 
-@media (max-width:450px) {
+@media (max-width:1200px) and (min-width:320px) {
+    .Details3{
+        margin: 90px auto;
+        height: 790px;
+        box-shadow: 0 0 0.5px ;
+        color: #BE4040;
+        max-width: 1379px;
+            background-color:rgb(255, 251, 236);
+            font-family: Lucida Handwriting;
+    }
+    .box2{
+        max-width: 610px;
+        max-height: 390px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        background-color:rgb(255, 251, 236);;
+        
+    }
     .dis2{
-        font-size: 15px;
+    
+        background-color: rgb(255, 251, 236);
+        margin: 30px 0;
+        font-size: 18px;
+        text-align: center;
+        
+        
+    }
+    .row2{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
        
     }
-    .bmin{
-        font-size: 25px;
-        width: 18px;
-        height: 10px;
-        
-       }
-       .bmax{
-        font-size: 25px;
-        width: 20px;
-        height: 10px;
-
-        
-       }
-    
-       .countb{
-        margin-top: 5px;
-        font-size: 15px;
+     .row2 h2{
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size:20px ;
+        text-align: center;
+        margin-top: 62px;
     }
-    .thumb2{
-        height: 25px;
-        width: 60px;
-        border-radius: 6px;
-        outline: none;
-        
-         
-
-    }
-    .add-card2 .ato{
-        width: 120px;
-        height: 35px;
-
-    }
-    .add-card2 .bto{
-        width: 120px;
-        height: 35px;
-    }
-    .box2 h5{
-        font-size: 15px;
-    }
-    .Details3{
-        margin-top: 30px;
-    }
-
-    
 }
 
 
