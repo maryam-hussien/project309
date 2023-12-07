@@ -1,5 +1,4 @@
 import "../Sidebar/sidebar.css";
-import CustomButon from "../../../componenet/button/CustomButton";
 import PersonIcon from "@mui/icons-material/Person";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
@@ -39,10 +38,10 @@ function Sidebar() {
               </li>
             </Link>
             <Link to="/dashboard/orderList">
-            <li className="sidebarlistItem">
-              <LocalMallIcon className="sidebarIcon" />
-              Orders
-            </li>
+              <li className="sidebarlistItem">
+                <LocalMallIcon className="sidebarIcon" />
+                Orders
+              </li>
             </Link>
           </ul>
         </div>
@@ -51,19 +50,19 @@ function Sidebar() {
           <h3 className="sidebarTitle">Manage</h3>
           <ul className="sidebarList">
             <Link to="/dashboard/newproduct">
-            <li className="sidebarlistItem">
-              <ShoppingBagIcon className="sidebarIcon" />
-              Add product
-            </li>
+              <li className="sidebarlistItem">
+                <ShoppingBagIcon className="sidebarIcon" />
+                Add product
+              </li>
             </Link>
             <Link to="/dashboard/user/:userId">
-            <li className="sidebarlistItem">
-              <ShoppingBagIcon className="sidebarIcon" />
-              Setting
-            </li>
+              <li className="sidebarlistItem">
+                <ShoppingBagIcon className="sidebarIcon" />
+                Setting
+              </li>
             </Link>
             <li className="log-out">
-              <CustomButon Name="LogOut" />
+              <button> Log out</button>
             </li>
           </ul>
         </div>
