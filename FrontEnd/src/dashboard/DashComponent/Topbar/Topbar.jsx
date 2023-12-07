@@ -19,8 +19,9 @@ function Topbar() {
                     <SettingsIcon/>
                     </Link>
                 </div>
-                
+                <Link to="/Profile">
                 <img src={profileImg} alt="" className="topAvatar" />
+                </Link>
             </div>
         </div>
     </div>

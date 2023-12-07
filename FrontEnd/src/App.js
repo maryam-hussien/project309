@@ -10,10 +10,10 @@ import User from "./dashboard/pages/User/User";
 import Product from "./dashboard/pages/Product/Product";
 import NewProduct from "./dashboard/pages/NewProducts/NewProduct";
 import DProductList from "./dashboard/pages/DProductList/DProductList";
+import Cart from "./pages/Cart/Cart";
 import Details from "./pages/Details/Details"
 import Profile from "./pages/Profile/Profile"
 import EditProfile from "./pages/EditProfile/EditProfile"
-
 
 function App() {
   return (
@@ -33,6 +33,8 @@ function App() {
         <Route path="/dashboard/product" element={<Product />} />
         <Route path="/dashboard/product/:productId" element={<Product />} />
         <Route path="/dashboard/newproduct" element={<NewProduct />} />
+        <Route path="/cart" element={<Cart />} />
+        
       </Routes>
     </div>
   );
