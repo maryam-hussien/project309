@@ -1,5 +1,6 @@
 const Item = require("../models/itemModel")
 const cloudinary = require('../utils/cloudinary');
+const User = require("../models/userModel")
 
 
 const getAll = async(req , res) => {
@@ -53,7 +54,7 @@ const AddItem = async(req , res) => {
         message: "type , price and image are required",
       });
     }
-    const itemExist = await Item.findOne({image})
+    const itemExist = await Item.findOne({result})
     if( itemExist){
       return res.status(400).send({
         success: false,
@@ -83,13 +84,13 @@ const AddItem = async(req , res) => {
 }
 const editItem = async(req , res) => {
   try {
+    const {name , type , price , image, size , description} = req.body
+    
+    const id = req.params.id
+    const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
     const result = await cloudinary.uploader.upload(image, {
       folder: "products",
   })
-    const {name , type , price , image, size , description} = req.body
-
-    const id = req.params.id
-    const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
     const update = {name ,
         type ,
         price ,
@@ -146,10 +147,11 @@ const deleteItem = async(req , res) => {
 }
 
 
+
 module.exports = {
   getAll,
  getById , 
  AddItem ,
   editItem , 
-  deleteItem
+  deleteItem,
 }
