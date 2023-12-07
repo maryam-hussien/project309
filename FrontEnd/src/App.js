@@ -14,6 +14,7 @@ import Details from "./pages/Details/Details"
 import Profile from "./pages/Profile/Profile"
 import EditProfile from "./pages/EditProfile/EditProfile"
 
+
 function App() {
   return (
     <div className="App">
