@@ -1,0 +1,163 @@
+.profile{
+  flex-wrap: wrap;
+  width: 70%;
+  align-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 2px 0;
+  border :2px solid #FFFFBA;
+  border-radius: 40px;
+  padding-bottom: 20px;
+}
+.profile-header{
+  background-color: #FFFFBA;
+  width: 100%;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  border-radius: 27px;
+
+}
+
+.profile-img{
+  width: 50%;
+  height: 50%;
+  border-radius: 1000px;
+  top: 80px;
+  position: relative;
+  left: 10%;
+}
+
+.profile-header-text {
+  margin: 0;
+  padding: 0;
+}
+.profile-header-text p {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-size: 25px;
+  right:35%;
+  top:75%;
+  text-transform: capitalize;
+}
+.profile-input-box{
+  margin-top: 80px;
+  padding: 5px;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}
+.profile-input{
+  padding: 5px 8px;
+  width:80%;
+  text-align: left;
+  margin-left: 4%;
+  margin-bottom: 4px;
+border-bottom: #FFFFBA 2px solid;
+}
+.profile-input input{
+ width: 60%;
+ border: none;
+ outline: none;
+}
+.profile-input p{
+  font-family: cursive;
+}
+.profile-btns{
+  width: 60%;
+  display: flex;
+  gap:10px;
+  margin: auto;
+  align-content: center;
+}
+.Profilebutton2{
+  background-color: #fff;
+  border: 1px solid #BE4040;
+  border-radius: 12px;
+  justify-content: center;
+  height: 44px;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s;
+  width: 65%;
+  
+}
+@media only screen and (max-width: 320px) {
+  .Edprofile-img{
+    width: 32%;
+    height: 32%;
+  }
+  .Edprofile-btns{
+  height: 30%;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .profile-img{
+    width: 35%;
+    height: 35%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .profile-img-box{
+    width: 27%;
+    height: 27%;
+ 
+  }
+  .profile-img{
+    width: 50%;
+    height: 50%;
+    top:40px;
+    left: 13%;
+
+  }
+  .profile-header-text p {
+    font-size: 13px;
+    right:30% ;
+    top:70%;
+  }
+  .profile-header{
+  padding: 15px 0;
+  }
+  .profile-input-box{
+  margin-top: 50px;
+  font-size: 13px;
+}
+.profile-btns{
+  width: 40%;
+  gap:5px;
+}
+.profile-btns :any-link{
+ text-decoration: none;
+ margin: auto;
+}
+.profile{
+  width: 90%;
+}
+}
+@media only screen and (min-width: 768px) {
+  .profile-img-box{
+    width: 17%;
+    height: 17%;
+ 
+  }
+  .profile-img{
+    width: 40%;
+    height: 40%;
+    top:50px;
+  }
+  .profile-header-text p {
+    font-size: 20px;
+    right:30% ;
+    top:70%;
+  }
+  .profile-header{
+  padding: 5px 0;
+  }
+}
+
+

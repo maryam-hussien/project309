@@ -9,6 +9,7 @@
     height:200px;
     color:  #FFFFBA;
     background-color: hsl(0, 50%, 50%);
+    bottom: 0;
 }
 .footer h1{
     text-align: center;
