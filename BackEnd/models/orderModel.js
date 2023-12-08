@@ -13,9 +13,14 @@ const orderSchema = mongoose.Schema({
           type : {
             type: String,
           },
-           image : {
-            type: String,
-           },
+          image: {
+            public_id: {
+                type: String,
+            },
+            url: {
+                type: String,
+            }
+        },
            price : {
             type: String,
            },

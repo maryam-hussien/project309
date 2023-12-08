@@ -8,6 +8,7 @@
   border :2px solid #FFFFBA;
   border-radius: 40px;
   padding-bottom: 20px;
+  flex: 1;
 }
 .profile-header{
   background-color: #FFFFBA;
@@ -70,6 +71,7 @@ border-bottom: #FFFFBA 2px solid;
   gap:10px;
   margin: auto;
   align-content: center;
+  align-items: center;
 }
 .Profilebutton2{
   background-color: #fff;

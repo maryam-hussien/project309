@@ -31,19 +31,19 @@ const addOrder = async(req , res) => {
     const product = await Item.findById(id)
     const { Address ,city ,phone , country} = req.body
    if (!userr) {
-    return res.status(404).json({
+    return res.json({
       success: false,
       message: 'User not found.',
     });
    }
    if(!product){
-     return res.status(404).send({
+     return res.send({
        success: false,
        message: "product not found",
      });
    }
     if( !Address || !city || !phone || !country  ){
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: "enter required data",
       });
@@ -65,10 +65,10 @@ const addOrder = async(req , res) => {
       }],
     })
     if (order){
-      return res.status(201).json(order)
+      return res.json(order)
     }
   } catch (error) {
-    res.status(500).send({
+    res.send({
       success: false,
       message: error.message,
     });
@@ -81,18 +81,18 @@ const editOrder = async(req , res) => {
     const { shippingAddress1 ,city ,phone , country} = req.body
     const update = req.body
    if (!userr) {
-    return res.status(404).json({
+    return res.json({
       success: false,
       message: 'User not found.',
     });
    }
     const order = await Order.findByIdAndUpdate(id , update ,  { new: true })
      if(!order){
-      return(res.status(404).send({success: false, message : 'order not found'}))
+      return(res.send({success: false, message : 'order not found'}))
     }
-    return res.status(201).json(order)
+    return res.json(order)
   } catch (error) {
-    res.status(500).send({
+    res.send({
       success: false,
       message: error.message,
     });
@@ -103,16 +103,16 @@ try{
   const id = req.params.id
   const userr  = await User.findById(req.user.id)
   if (!userr) {
-    return res.status(404).json({
+    return res.json({
       success: false,
       message: 'User not found.',
     });
    }
     const order = await Order.findByIdAndDelete(id)
       if(!order){
-      return(res.status(404).json({  success: false, message : 'order not found'}))
+      return(res.json({  success: false, message : 'order not found'}))
     }
-    return res.status(200).send({ success: true , message :'Deleted Successfully'})
+    return res.send({ success: true , message :'Deleted Successfully'})
 
   }  catch (error) {
     res.send({
