@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Profile.css";
 import image from "../../assets/profile/profile.jpg";
 import Navbar from "../../componenet/Navbar/Navbar";
@@ -7,8 +7,6 @@ import asset from '../../assets/profile/photo_2023-11-30_09-54-44.jpg'
 import CustomButton from "../../componenet/button/CustomButton";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { useState, useEffect } from "react";
-
 
 
 const Profile = () => {
@@ -104,7 +102,7 @@ const Profile = () => {
                 <p>Total: 2450LE</p>
         
               </div>
-              <div className="star-icons">
+              {/* <div className="star-icons">
               {[1, 2, 3, 4, 5].map((index) => (
                 <Star
                   key={index}
@@ -112,7 +110,7 @@ const Profile = () => {
                   style={{ color: index <= rating ? 'yellow' : 'inherit' }}
                   fontSize="10px"/>
               ))}
-            </div>
+            </div> */}
             
             </div>
             

@@ -1,7 +1,9 @@
 import React from 'react';
 import './Products.css';
+import { Link } from 'react-router-dom';
 
 function Products(props) {
+    console.log(props);
     return (
         <>
             <div className="card">
@@ -9,9 +11,10 @@ function Products(props) {
                 <p>{props.product.description}</p>
                 <h6>Price: {props.product.price}</h6>
                 <div className='button1'>
-          
-                <button className='button3' onClick={() => { console.log('You are going to buy this product', props.product.price) }}>Details</button>
-                <button className='button2'>add to cart</button>
+                <Link to={`/details/${props.product._id}`}>
+                <button className='button3' >Details</button>
+                </Link>
+                <button className='button2' onClick={() => { alert('product added to cart') }}>add to cart</button>
                 </div>
                 </div>
         </>

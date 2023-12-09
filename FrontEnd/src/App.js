@@ -14,6 +14,7 @@ import Cart from "./pages/Cart/Cart";
 import Details from "./pages/Details/Details"
 import Profile from "./pages/Profile/Profile"
 import EditProfile from "./pages/EditProfile/EditProfile"
+import Menu from "./pages/Menu/Menu";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cart/checkout" element={<Checkout />} />
         <Route path="/auth" element={<Authentication />} />
-        <Route path="/details" element={<Details />}/>
+        <Route path="/details/:id" element={<Details />}/>
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<EditProfile />}/>
         <Route path="/dashboard/home" element={<HomePage />} />
@@ -34,6 +35,7 @@ function App() {
         <Route path="/dashboard/product/:productId" element={<Product />} />
         <Route path="/dashboard/newproduct" element={<NewProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/search" element={<Menu />} />
         
       </Routes>
     </div>
