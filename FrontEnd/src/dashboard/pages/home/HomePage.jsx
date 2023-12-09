@@ -4,12 +4,7 @@ import Topbar from '../../DashComponent/Topbar/Topbar'
 import Sidebar from '../../DashComponent/Sidebar/Sidebar'
 import FeaturedInfo from '../../DashComponent/FeaturedInfo/FeaturedInfo'
 import WidgetLg from '../../DashComponent/WidgetLg/WidgetLg'
-import NewUser from '../NewUser/NewUser'
-import Product from '../Product/Product'
-import  User  from '../User/User'
-import UserList from '../UserList/UserList'
-import DProductList from '../DProductList/DProductList'
-import NewProduct from '../NewProducts/NewProduct'
+
 
 function Home() {
   

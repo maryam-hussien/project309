@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./UserList.css";
 import Sidebar from "../../DashComponent/Sidebar/Sidebar";
 import Topbar from "../../DashComponent/Topbar/Topbar";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
-import { userRows } from "../../dummyData";
 import axios from "axios";
 
 function UserList() {
@@ -29,6 +28,10 @@ function UserList() {
       console.log(error.message);
     }
   };
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   // getUsers();
   // console.log("ss", data);
   const columns = [
@@ -60,7 +63,7 @@ function UserList() {
   ];
 
   return (
-    <div className="homePage1">
+    <>
       <Topbar />
       <div className="container3">
         <Sidebar />
@@ -81,7 +84,7 @@ function UserList() {
           )}
         </div>
       </div>
-    </div>
+    </>
     // <div className='userList'>
     //   <div className='homePage1'>
     //   <Topbar/>

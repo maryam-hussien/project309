@@ -42,7 +42,7 @@ button{
     align-items: center;
     border-radius: 10px;
 }
-.sidebarlistItem.active ,
+.sidebarlistItem.active:hover ,
 .sidebarlistItem:hover{
     background-color: rgb(240, 240, 255) ;
     border-radius: 5px;
