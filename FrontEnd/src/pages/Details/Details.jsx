@@ -17,6 +17,8 @@ class Details extends React.Component {
 render(){
     const {products} = this.state
     return (
+        <>
+        
       <div className='Details3'>
        {products.map(item=>(<div className='details3' key={item.id}>
        
@@ -47,18 +49,12 @@ render(){
         </div>
         
         </div>
-        
-        
-       
-        
-       
-        
        </div>
-        
+       
        )) }
        
         </div>
-         
+        </> 
     );
 }
     

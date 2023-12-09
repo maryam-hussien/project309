@@ -1,55 +1,57 @@
-import { useState } from "react";
-import i from "../../assets/Images/Image-1.jpg";
-import i2 from "../../assets/Images/Image-2.jpg";
-import './ImageSlider.css';
-const ImageSlider =()=>{
-    const Slides=[i,i,i2]
-    const [currentIndex,setcurrentIndex]=useState(0);
-    const slideStyles ={
-        borderRadius:"10px",
-        width:'100%',
-        backgroundSize:"cover",
-        display:'flex',
-    }
-   
-    const slideStyles1 ={
-    
-      width:'90%',
-        height:'49vh',
-        top: '40px',
-        overflow:'hidden',
-        justifyContent:'center' ,
-        position:'relative',
-        display:'flex',
-          borderRadius:"10px",
-     
-          backgroundSize:"cover",
-          backgroundImage: `url(${Slides[currentIndex]})`,
-      }
-    
-    const handleLeftArrowClick = () => {
-        setcurrentIndex((prevIndex) => (prevIndex === 0 ? Slides.length - 1 : prevIndex - 1));
-      };
-    
-      const handleRightArrowClick = () => {
-        setcurrentIndex((prevIndex) => (prevIndex === Slides.length - 1 ? 0 : prevIndex + 1));
-      };
-    
-      return (
-        <>
-          <div className="welcome"></div>
-    
-          <div style={slideStyles}>
-          <div className="leftArrowStyles" onClick={handleLeftArrowClick}>
-              &#9665;
+import React, { useState } from "react";
+import i from "../../assets/profile/c.jpeg";
+import i3 from "../../assets/profile/c.webp";
+import i4 from "../../assets/profile/pexels-photo-2922672.jpeg";
+import i2 from "../../assets/profile/pexels-photo-385976.jpeg";
+import "./ImageSlider.css";
+
+const ImageSlider = () => {
+  const Slides = [i, i, i2, i3, i4];
+  const [currentIndex, setcurrentIndex] = useState(0);
+
+  const handleLeftArrowClick = () => {
+    setcurrentIndex((prevIndex) =>
+      prevIndex === 0 ? Slides.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleRightArrowClick = () => {
+    setcurrentIndex((prevIndex) =>
+      prevIndex === Slides.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handleDotClick = (index) => {
+    setcurrentIndex(index);
+  };
+
+  return (
+    <>
+      <div className="slideStyles">
+        <div className="leftArrowStyles" onClick={handleLeftArrowClick}>
+          &#9665;
+        </div>
+        <div
+          className="slideStyles1"
+          style={{ backgroundImage: `url(${Slides[currentIndex]})` }}
+        ></div>
+        <div className="RightArowStyles" onClick={handleRightArrowClick}>
+          &#9655;
+        </div>
+        <div className="dot">
+          {Slides.map((slide, slideindex) => (
+            <div
+              key={slideindex}
+              className={`dotstyle ${currentIndex === slideindex && 'active'}`}
+              onClick={() => handleDotClick(slideindex)}
+            >
+              ⚫
             </div>
-            <div style={slideStyles1}></div>
-           
-            <div className="RightArowStyles" onClick={handleRightArrowClick}>
-              &#9655;
-            </div>
-          </div>
-        </>
-      );
-    };
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
 export default ImageSlider;
