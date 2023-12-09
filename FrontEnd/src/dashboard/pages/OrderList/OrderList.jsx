@@ -34,7 +34,6 @@ function DProductList() {
         if(response.data.success){
           console.log("order deleted successfully:", response.data);
           setData(data.filter((item) => item.id !== id));
-            // Redirect or handle the deleted state as needed
           } 
       }catch(error){
         console.error('product Error:', error.message);

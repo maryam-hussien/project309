@@ -16,27 +16,23 @@ function Product() {
     size: "",
     description: "",
     image: "",
-    // Add other fields as needed
   });
 
-  const {productId} = useParams(); // Replace with the actual product ID
+  const {productId} = useParams(); 
   const id = productId
   useEffect(() => {
-    // Fetch product data from your backend API
     console.log(productId);
     axios.get(`http://localhost:5000/item/getById/${id}`)
       .then(response => {
-        // Set the fetched data in the state
         setProductData(response.data);
       })
       .catch(error => {
         console.error("Error fetching product data:", error);
       });
-  }, []); // Empty dependency array means this effect runs once when the component mounts
+  }, []); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Update the state with the changed input value
     setProductData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -45,7 +41,6 @@ function Product() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    // Update the state with the selected file
     setProductData((prevData) => ({
       ...prevData,
       image: file,
@@ -54,7 +49,6 @@ function Product() {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    // Perform the update logic, e.g., send a PUT request to your backend API
     axios.put(`http://localhost:5000/item/edit/${id}`, productData)
       .then(response => {
         console.log("Product updated successfully:", response.data);
@@ -75,7 +69,7 @@ function Product() {
 
         <div className="DashHome">
           <div className="product">
-            {/* ... (same as your existing code) */}
+           
             <div className="productBottom">
               <form className="productForm">
                 <div className="productFormLeft">
