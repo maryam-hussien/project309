@@ -3,12 +3,15 @@ import "./UserList.css";
 import Sidebar from "../../DashComponent/Sidebar/Sidebar";
 import Topbar from "../../DashComponent/Topbar/Topbar";
 import { DataGrid } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { userRows } from "../../dummyData";
 import axios from "axios";
 
 function UserList() {
   const [data, setData] = useState(null);
+  useEffect(() => {
+    getUsers();
+  }, []);
   const getUsers = async () => {
     try {
       const response = await axios.get("http://localhost:5000/user/all", {
@@ -17,7 +20,11 @@ function UserList() {
           authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmY0NzcxYTYzYTg2YzBmMzM0MTlkZCIsImlhdCI6MTcwMTc5MTYwMiwiZXhwIjoxNzA0MzgzNjAyfQ.A8EKX1v2FCxaKLVO46D4Lp3KrHFksnMaDOzhI3a-9yY",
         },
+        catch (error) {
+          console.error(' Error:', error);
+        }
       });
+   
       const formattedData = response.data.map((row, index) => ({
         ...row,
         id: index + 1,

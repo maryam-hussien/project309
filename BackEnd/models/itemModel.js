@@ -4,19 +4,20 @@ const itemSchema = mongoose.Schema(
 {
   name:{
     type: String,
+    required: true,
   },
   type : {
     type: String,
     required: true,
   },
-  image: {
-    public_id: {
-        type: String,
-    },
-    url: {
-        type: String,
-    }
-},
+//   image: {
+//     public_id: {
+//         type: String,
+//     },
+//     url: {
+//         type: String,
+//     }
+// },
    price : {
     type: String,
     required: true,

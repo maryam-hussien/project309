@@ -7,7 +7,7 @@ const cloudinary = require('../utils/cloudinary');
 
 const registerUser = async (req, res) => {
   try {
-    const { name , email , password , role , profilePicture} = req.body
+    const { name , email , password , role , profilePicture , address , phone}  = req.body
     if(!name || !email || !password){
       return res.send({
         success: false,
@@ -32,6 +32,8 @@ const registerUser = async (req, res) => {
       password:hashPassword,
       role,
       profilePicture,
+       address ,
+       phone
     })
      if (user){
       return res.send({
@@ -40,10 +42,13 @@ const registerUser = async (req, res) => {
         _id: user.id,
         name: user.name,
         email: user.email,
-        token: generateToken(user._id),
+        address :user.address ,
+       phone:user.phone,
+       token: generateToken(user._id),
+    })
 
-      });
-     }
+      }
+     
      else{
       return res.send({
         success: false,
@@ -78,8 +83,9 @@ const LoginUser = async (req, res) => {
           _id: user.id,
           name: user.name,
           email: user.email,
-          token: generateToken(user._id),
-      });
+          address :user.address ,
+          phone:user.phone,
+          token: generateToken(user._id),      });
     }
 
      else{
@@ -126,17 +132,20 @@ const generateToken = (id) => {
 
 const editUser = async(req , res) => {
   try{
-    const result = await cloudinary.uploader.upload(image, {
-      folder: "products",
-  })
-  const {name , image} = req.body
+  //   const result = await cloudinary.uploader.upload(image, {
+  //     folder: "products",
+  // })
+  const {name , image , phone , address} = req.body
 
   const update = {   
     name,
-    image: {
-      public_id: result.public_id,
-      url: result.secure_url
-  },  }
+    phone ,
+     address,
+  //   image: {
+  //     public_id: result.public_id,
+  //     url: result.secure_url
+  // }, 
+ }
 
    const userr = await User.findByIdAndUpdate(req.user.id ,update, {new : true})
    if(!userr){
@@ -145,7 +154,15 @@ const editUser = async(req , res) => {
       message: " not authorized User",
     });
    }
-   return res.json(userr)
+   return res.send({
+    success: true,
+    message: "Edit sucessfully",
+      _id: userr.id,
+      name: userr.name,
+      email: userr.email,
+      address :userr.address ,
+      phone:userr.phone,
+          });
   }catch (error) {
     res.send({
       success: false,
