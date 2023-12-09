@@ -6,17 +6,17 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function Footer() {
   const handleFacebookClick = () => {
-    // Redirect to the Facebook page when clicked
+  
     window.open('https://www.facebook.com/archywoody?mibextid=vk8aRt', '_blank');
   };
 
   const handleInstagramClick = () => {
-    // Redirect to the Instagram profile when clicked
+  
     window.open('https://instagram.com/archiwoo_d?igshid=YTQwZjQ0NmI0OA==', '_blank');
   };
 
   const handleWhatsAppClick = () => {
-    // Redirect to the WhatsApp page when clicked
+   
     window.open('https://wa.me/your-phone-number', '_blank');
   };
 

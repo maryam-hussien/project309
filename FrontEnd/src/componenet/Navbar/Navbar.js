@@ -17,6 +17,15 @@ function Navbar(){
   const auth =() => {
       navigate("/auth")
   }
+  const goToSearch =() => {
+      navigate("/search")
+  }
+  const goToDash =() => {
+      navigate("/dashboard/home")
+  }
+  const goToHome =() => {
+      navigate("/")
+  }
     return(
         <>
       <div className='nav1'>
@@ -25,12 +34,12 @@ function Navbar(){
       
       <div className='nav2'>
         <div className='icon2'>
-        <SearchOutlinedIcon />
+        <SearchOutlinedIcon onClick={goToSearch} />
         </div>
-       <p>Archi-wood</p>
+       <p  onClick={goToHome}>Archi-wood</p>
        <div className='icons'>
-        {user ? <PersonOutlinedIcon /> :<button className='log' onClick={auth}>login</button>}
-        <LocalMallOutlinedIcon />
+        {user ? <><button className='log' onClick={goToDash}>Dashboard</button> <PersonOutlinedIcon onClick={()=>{navigate("/profile")}} /> </> :<button className='log' onClick={auth}>login</button> }
+        <LocalMallOutlinedIcon  onClick={()=>{navigate("/cart")}}/>
        
        </div>
       </div>

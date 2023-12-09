@@ -1,12 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 .footer{
     width: 100%;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     height:200px;
+    position: relative;
+    bottom: 0;
     color:  #FFF;
     background-color: #CA5252C7;
 }

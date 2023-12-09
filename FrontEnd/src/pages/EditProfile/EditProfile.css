@@ -1,0 +1,112 @@
+.Edprofile{
+  flex-wrap: wrap;
+  width: 70%;
+  align-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 2px 0;
+  border :2px solid #FFFFBA;
+  border-radius: 40px;
+  padding-bottom: 20px;
+}
+.Edprofile-header{
+  width: 100%;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  border-radius: 27px;
+
+}
+
+.Edprofile-img{
+  width: 22%;
+  height: 22%;
+  border-radius: 500px;
+  top: 40px;
+  position: relative;
+  left: 35%;
+}
+
+.Edprofile-input-box{
+  margin-top: 80px;
+  padding: 5px;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}
+.Edprofile-input{
+  padding: 5px 8px;
+  width:80%;
+  text-align: left;
+  margin-left: 4%;
+  margin-bottom: 4px;
+border-bottom: #FFFFBA 2px solid;
+}
+.Edprofile-input input{
+ width: 100%;
+ border: none;
+ outline: none;
+}
+.Edprofile-input p{
+  font-family: cursive;
+}
+.Edprofile-btns{
+  width: 60%;
+  display: flex;
+  gap:10px;
+  margin: auto;
+  text-decoration: none;
+  align-items: center;
+
+}
+.Edprofilebutton2{
+  background-color: #fff;
+  border: 1px solid #BE4040;
+  border-radius: 12px;
+  justify-content: center;
+  height: 44px;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-transform: uppercase;
+  text-decoration: none; 
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 320px) {
+  .Edprofile-img{
+    width: 32%;
+    height: 32%;
+  }
+  .Edprofile-btns{
+  height: 30%;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .Edprofile-img{
+    width: 35%;
+    height: 35%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .Edprofile-img-box{
+    width: 30%;
+    height: 30%;
+ 
+  }
+  .Edprofile-img{
+    width: 40%;
+    height: 40%;
+  }
+}
+@media only screen and (max-width: 4768px) {
+  .Edprofile-img-box{
+    width: 17%;
+    height: 17%;
+ 
+  }
+}
+
+

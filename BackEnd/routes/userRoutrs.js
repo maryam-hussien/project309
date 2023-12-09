@@ -6,7 +6,7 @@ userRoutes.post("/register" , registerUser);
 
 userRoutes.post("/login" , LoginUser);
 
-userRoutes.get('/me' , protect ,getById)
+userRoutes.get('/find' , protect ,getById)
 
 userRoutes.put('/edit' , protect , editUser)
 userRoutes.delete('/delete' , protect , deleteUser)
